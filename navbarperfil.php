@@ -12,7 +12,8 @@
 		<li class="logo"><img id="logohome" src="images/logoblanco.png" width="250px"/>
 		<li class="bold"><a href="resumen.php" class="waves-effect waves-teal">Resumen</a></li>
 		<li class="bold"><a href="perfil.php" class="waves-effect waves-teal">Mi Perfil</a></li>
-		<li class="bold"><a href="ayudar.php" class="waves-effect waves-teal">Ayudar</a></li>
-		<li class="bold"><a href="ofrecer.php" class="waves-effect waves-teal">Ofrecer</a></li>
-		<li class="bold"><a href="solicitar.php" class="waves-effect waves-teal">Solicitar</a></li>
+		<li class="bold"><a href="ayudar.php" class="waves-effect waves-teal">Ayudar a alguien</a></li>
+		<li class="bold"><a href="pedirayuda.php" class="waves-effect waves-teal">Pedir ayuda</a></li>
+		<li class="bold"><a href="publicarayuda.php" class="waves-effect waves-teal">Publicar ayuda</a></li>
+		<li class="bold"><a href="publicarpedido.php" class="waves-effect waves-teal">Publicar pedido</a></li>
 	</ul>

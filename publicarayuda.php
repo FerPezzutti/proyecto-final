@@ -20,7 +20,7 @@
               <div class="col s12 m6 offset-m3">
                 <div class="card-panel z-depth-1 grey lighten-4 row">
                   <div class="row">
-                    <form class="col s12" action="validaraviso.php" method="post" onSubmit="">
+                    <form class="col s12" action="validarofrecer.php" method="post" onSubmit="">
                       <div class="row">
                         <div class="input-field col s12">
                           <input id="titulo" name="titulo" type="text">

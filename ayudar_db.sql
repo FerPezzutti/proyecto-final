@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2017 a las 23:27:26
+-- Tiempo de generación: 15-11-2017 a las 00:39:38
 -- Versión del servidor: 10.1.24-MariaDB
 -- Versión de PHP: 7.1.6
 
@@ -32,9 +32,10 @@ CREATE TABLE `avisos` (
   `id_aviso` int(11) NOT NULL,
   `titulo` varchar(255) NOT NULL,
   `descripcion` varchar(255) NOT NULL,
-  `id_avisoimagen` int(11) NOT NULL,
+  `imagen` varchar(255) NOT NULL,
   `id_categoria` int(11) NOT NULL,
-  `id_localidad` int(11) NOT NULL
+  `localidad` varchar(255) NOT NULL,
+  `id_aviso_tipo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -188,6 +189,13 @@ INSERT INTO `usuarios_tipo` (`id_usuariotipo`, `nombre_tipo`) VALUES
 --
 
 --
+-- Indices de la tabla `avisos`
+--
+ALTER TABLE `avisos`
+  ADD KEY `id_categoria` (`id_categoria`),
+  ADD KEY `id_aviso_tipo` (`id_aviso_tipo`);
+
+--
 -- Indices de la tabla `avisos_categorias`
 --
 ALTER TABLE `avisos_categorias`
@@ -251,6 +259,13 @@ ALTER TABLE `usuarios_tipo`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `avisos`
+--
+ALTER TABLE `avisos`
+  ADD CONSTRAINT `avisos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `avisos_categorias` (`id_categoria`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `avisos_ibfk_2` FOREIGN KEY (`id_aviso_tipo`) REFERENCES `avisos_tipo` (`id_avisotipo`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuarios`
