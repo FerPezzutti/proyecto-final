@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2017 a las 00:39:38
+-- Tiempo de generación: 15-11-2017 a las 21:37:01
 -- Versión del servidor: 10.1.24-MariaDB
 -- Versión de PHP: 7.1.6
 
@@ -35,8 +35,23 @@ CREATE TABLE `avisos` (
   `imagen` varchar(255) NOT NULL,
   `id_categoria` int(11) NOT NULL,
   `localidad` varchar(255) NOT NULL,
-  `id_aviso_tipo` int(11) NOT NULL
+  `id_aviso_tipo` int(11) NOT NULL,
+  `id_pedidoayuda` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `avisos`
+--
+
+INSERT INTO `avisos` (`id_aviso`, `titulo`, `descripcion`, `imagen`, `id_categoria`, `localidad`, `id_aviso_tipo`, `id_pedidoayuda`) VALUES
+(35, 'Bicicleta', 'Bicicleta MTB casi nueva', 'img/bicicleta.jpg', 7, 'Haedo', 2, 2),
+(37, 'Necesito dos pintores', 'Necesito dos pintores para pintar mi casa', 'img/pintores.jpg', 11, 'Ramos Mejia', 1, 1),
+(39, 'Ropa usada', 'Regalo ropa usada en buenas condiciones para mujer', 'img/ropa.jpg', 16, 'San Justo', 2, 2),
+(40, 'Cds nuevos y usados', 'Regalo cds nuevos y usados en excelente estado, la mayoria son de rock nacional', 'img/cds1.jpg', 13, 'Capital Federal', 2, 2),
+(41, 'DiseÃ±ador GrÃ¡fico', 'Ofrezco mis servicios de diseÃ±ador grafico', 'img/disenador.jpg', 15, 'Quilmes', 1, 2),
+(42, 'Alimentos no perecederos', 'Necesitamos alimentos no perecederos para comedor', 'img/alimentos.jpg', 1, 'Liniers', 2, 1),
+(43, 'Necesito un mecanico', 'Necesito servicio mecanico para un dodge 1500', 'img/mecanico.jpg', 14, 'Villa Luzuriaga', 1, 1),
+(44, 'Vestido de novia', 'Busco vestido de novia para casarme en diciembre, talle M, blanco', 'img/novia.jpg', 16, 'Moron', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -95,6 +110,25 @@ CREATE TABLE `avisos_tipo` (
 INSERT INTO `avisos_tipo` (`id_avisotipo`, `nombre_tipo`) VALUES
 (1, 'Servicio'),
 (2, 'Producto');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidoayuda`
+--
+
+CREATE TABLE `pedidoayuda` (
+  `id_pedidoayuda` int(11) NOT NULL,
+  `descripcion` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `pedidoayuda`
+--
+
+INSERT INTO `pedidoayuda` (`id_pedidoayuda`, `descripcion`) VALUES
+(1, 'pedido'),
+(2, 'ayuda');
 
 -- --------------------------------------------------------
 
@@ -192,8 +226,10 @@ INSERT INTO `usuarios_tipo` (`id_usuariotipo`, `nombre_tipo`) VALUES
 -- Indices de la tabla `avisos`
 --
 ALTER TABLE `avisos`
+  ADD PRIMARY KEY (`id_aviso`),
   ADD KEY `id_categoria` (`id_categoria`),
-  ADD KEY `id_aviso_tipo` (`id_aviso_tipo`);
+  ADD KEY `id_aviso_tipo` (`id_aviso_tipo`),
+  ADD KEY `id_pedidoayuda` (`id_pedidoayuda`);
 
 --
 -- Indices de la tabla `avisos_categorias`
@@ -205,7 +241,14 @@ ALTER TABLE `avisos_categorias`
 -- Indices de la tabla `avisos_tipo`
 --
 ALTER TABLE `avisos_tipo`
-  ADD PRIMARY KEY (`id_avisotipo`);
+  ADD PRIMARY KEY (`id_avisotipo`),
+  ADD KEY `id_avisotipo` (`id_avisotipo`);
+
+--
+-- Indices de la tabla `pedidoayuda`
+--
+ALTER TABLE `pedidoayuda`
+  ADD PRIMARY KEY (`id_pedidoayuda`);
 
 --
 -- Indices de la tabla `provincias`
@@ -232,6 +275,11 @@ ALTER TABLE `usuarios_tipo`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `avisos`
+--
+ALTER TABLE `avisos`
+  MODIFY `id_aviso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+--
 -- AUTO_INCREMENT de la tabla `avisos_categorias`
 --
 ALTER TABLE `avisos_categorias`
@@ -241,6 +289,11 @@ ALTER TABLE `avisos_categorias`
 --
 ALTER TABLE `avisos_tipo`
   MODIFY `id_avisotipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `pedidoayuda`
+--
+ALTER TABLE `pedidoayuda`
+  MODIFY `id_pedidoayuda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `provincias`
 --
@@ -265,7 +318,8 @@ ALTER TABLE `usuarios_tipo`
 --
 ALTER TABLE `avisos`
   ADD CONSTRAINT `avisos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `avisos_categorias` (`id_categoria`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `avisos_ibfk_2` FOREIGN KEY (`id_aviso_tipo`) REFERENCES `avisos_tipo` (`id_avisotipo`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `avisos_ibfk_2` FOREIGN KEY (`id_aviso_tipo`) REFERENCES `avisos_tipo` (`id_avisotipo`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `avisos_ibfk_3` FOREIGN KEY (`id_pedidoayuda`) REFERENCES `pedidoayuda` (`id_pedidoayuda`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuarios`

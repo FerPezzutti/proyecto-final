@@ -20,13 +20,14 @@
               <div class="col s12 m6 offset-m3">
                 <div class="card-panel z-depth-1 grey lighten-4 row">
                   <div class="row">
-                    <form class="col s12" action="validaraviso.php" method="post" onSubmit="">
+                    <form class="col s12" action="validaraviso.php" method="post" onSubmit="" enctype="multipart/form-data">
                       <div class="row">
                         <div class="input-field col s12">
                           <input id="titulo" name="titulo" type="text">
                           <label for="titulo">Titulo</label>
                         </div>
                         <div class="input-field col s12">
+                          <input type="hidden" name="pedidoayuda" value="1">
                           <textarea id="descripcion" name="descripcion" class="materialize-textarea"></textarea>
                           <label for="textarea1">Descripción</label>
                         </div>
@@ -34,21 +35,21 @@
                           <div class="file-field input-field">
                             <div class="btn">
                               <span>Imagen</span>
-                              <input type="file">
+                              <input type="file" name="imageninput" id="imageninput">
                             </div>
                             <div class="file-path-wrapper">
-                              <input class="file-path validate" type="text">
+                              <input class="file-path validate" type="text" name="nombreimg">
                             </div>
                           </div>
                         </div>
                       </div>
                       <div class="row">
                         <p>
-                          <input name="group1" type="radio" id="test1" />
+                          <input name="tipoaviso" type="radio" id="test1" value="1" />
                           <label for="test1">Servicio</label>
                         </p>
                         <p>
-                          <input name="group1" type="radio" id="test2" />
+                          <input name="tipoaviso" type="radio" id="test2" value="2" />
                           <label for="test2">Producto</label>
                         </p>
                       </div>
@@ -61,7 +62,7 @@
                                 $result=mysqli_query($link, $query);
                                 while($row = mysqli_fetch_object($result))
                                 {
-                                echo "<option value=" . $row->id . ">" . $row->descripcion . "</option>";
+                                echo "<option value=" . $row->id_categoria . ">" . $row->descripcion . "</option>";
                                 }
                               ?>
                           </select>

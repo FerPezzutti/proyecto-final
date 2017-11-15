@@ -16,82 +16,43 @@
 			<div class="container">
 				<div class="col s12 m12">
 			        <div class="row">
-			       		<div class="col  m6">
-	           				<div class="card medium">
-	              				<div class="card-image waves-effect waves-block waves-light">
-	               					<img class="activator" src="images/office.jpg">
-	              				</div>
-	              				<div class="card-content">
-	                				<span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-	                   				<div class="row">
-	                    				<div class="col  m6 offset-m4">
-	                						<a class="waves-effect waves-light btn-large">AYUDAR</a>
-	              						</div>
-	             					</div>
-	              				</div>
-	              				<div class="card-reveal">
-	                				<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-	                				<p>Here is some more information about this product that is only revealed once clicked on.</p>
-	              				</div>
-	            			</div>
-	        			</div>
-	        			<div class="col  m6">
-	           				<div class="card medium">
-	              				<div class="card-image waves-effect waves-block waves-light">
-	               					<img class="activator" src="images/office.jpg">
-	              				</div>
-	              				<div class="card-content">
-	                				<span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-	                   				<div class="row">
-	                    				<div class="col  m6 offset-m4">
-	                						<a class="waves-effect waves-light btn-large">AYUDAR</a>
-	              						</div>
-	             					</div>
-	              				</div>
-	              				<div class="card-reveal">
-	                				<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-	                				<p>Here is some more information about this product that is only revealed once clicked on.</p>
-	              				</div>
-	            			</div>
-	        			</div>
-	        			<div class="col  m6">
-	           				<div class="card medium">
-	              				<div class="card-image waves-effect waves-block waves-light">
-	               					<img class="activator" src="images/office.jpg">
-	              				</div>
-	              				<div class="card-content">
-	                				<span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-	                   				<div class="row">
-	                    				<div class="col  m6 offset-m4">
-	                						<a class="waves-effect waves-light btn-large">AYUDAR</a>
-	              						</div>
-	             					</div>
-	              				</div>
-	              				<div class="card-reveal">
-	                				<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-	                				<p>Here is some more information about this product that is only revealed once clicked on.</p>
-	              				</div>
-	            			</div>
-	        			</div>
-	        			<div class="col  m6">
-	           				<div class="card medium">
-	              				<div class="card-image waves-effect waves-block waves-light">
-	               					<img class="activator" src="images/office.jpg">
-	              				</div>
-	              				<div class="card-content">
-	                				<span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-	                   				<div class="row">
-	                    				<div class="col  m6 offset-m4">
-	                						<a class="waves-effect waves-light btn-large">AYUDAR</a>
-	              						</div>
-	             					</div>
-	              				</div>
-	              				<div class="card-reveal">
-	                				<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-	                				<p>Here is some more information about this product that is only revealed once clicked on.</p>
-	              				</div>
-	            			</div>
-	        			</div>
+			        	<?php
+			        		$query="SELECT a.titulo as titulo, a.descripcion as descripcion, a.imagen as imagen
+							FROM avisos as a
+							WHERE a.id_pedidoayuda='1'";
+							$result=mysqli_query($link, $query);
+							$numero_resultados = mysqli_num_rows($result);
+
+							if ($numero_resultados==null){
+							echo'<p>No hay anuncios disponibles</p>';
+							} else{
+								while($row = mysqli_fetch_object($result))
+								{
+									echo'<div class="col  m6">';
+										echo'<div class="card medium">';
+				              				echo'<div class="card-image waves-effect waves-block waves-light">';
+				               					echo'<img class="activator" src="' . $row->imagen . '">';
+				              				echo'</div>';
+				              				echo'<div class="card-content">';
+				                				echo'<span class="card-title activator grey-text text-darken-4">' . $row->titulo . '<i class="material-icons right">more_vert</i></span>';
+				                   				echo'<div class="row">';
+				                    				echo'<div class="col  m6 offset-m4">';
+				                						echo'<a class="waves-effect waves-light btn-large">AYUDAR</a>';
+				              						echo'</div>';
+				             					echo'</div>';
+				              				echo'</div>';
+				              				echo'<div class="card-reveal">';
+				                				echo'<span class="card-title grey-text text-darken-4">' . $row->titulo . '<i class="material-icons right">close</i></span>';
+				                				echo'<p>' . $row->descripcion . '</p>';
+				              				echo'</div>';
+				            			echo'</div>';
+				        			echo'</div>';
+				        		}
+				        	}
+			        	?>
+
+			       		
+
 	        		</div>
 	        	</div>
 	        </div>

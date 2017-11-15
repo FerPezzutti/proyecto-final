@@ -26,7 +26,7 @@
 						<h2 class="center homeicons"><img id="manonecesito" src="images/necesito.png" /></h2>
 						<h5 class="center homeh5">Necesito</h5>
 						<br>
-						<p class="light center">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components.</p>
+						<p class="light center">Publica lo que necesites para que otros puedan ayudarte.</p>
 					</div>
 				</div>
 
@@ -35,7 +35,7 @@
 						<h2 class="center homeicons"><img id="manoofrezco" src="images/ofrezco.png" /></h2>
 						<h5 class="center homeh5">Ofrezco</h5>
 						<br>
-						<p class="light center">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components.</p>
+						<p class="light center">Ayuda a los demás y suma puntos para que también te ayuden a vos.</p>
 					</div>
 			    </div>
 			</div>
