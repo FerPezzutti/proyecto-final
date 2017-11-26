@@ -18,7 +18,7 @@
 			        <div class="row">
 			        	<form method="post" name="formcard" action="postulacion.php">
 			        	<?php
-			        		$query="SELECT a.id_aviso as id_aviso, a.titulo as titulo, a.descripcion as descripcion, a.imagen as imagen, p.nombre as provincia, c.descripcion as categoria
+			        		$query="SELECT a.id_aviso as id_aviso, a.titulo as titulo, a.descripcion as descripcion, a.imagen as imagen, p.nombre as provincia, c.descripcion as categoria, a.id_pedidoayuda as pedidoayuda
 							FROM avisos as a join provincias as p on a.id_provincia=p.id_provincia join avisos_categorias as c on a.id_categoria=c.id_categoria
 							WHERE a.id_pedidoayuda='2'";
 							$result=mysqli_query($link, $query);
@@ -48,6 +48,7 @@
 				                				echo'<span class="card-title grey-text text-darken-4">' . $row->titulo . '<i class="material-icons right">close</i></span>';
 				                				echo'<p>' . $row->descripcion . '</p>';
 				                				echo'<input type="hidden" name="id_aviso" value="' . $row->id_aviso . '">';
+				                				echo'<input type="hidden" name="pedidoayuda" value="' . $row->pedidoayuda . '">';
 				              				echo'</div>';
 				            			echo'</div>';
 				        			echo'</div>';

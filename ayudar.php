@@ -16,9 +16,10 @@
 			<div class="container">
 				<div class="col s12 m12">
 			        <div class="row">
+			        	<form method="post" name="formcard" action="postulacion.php">
 			        	<?php
-			        		$query="SELECT a.titulo as titulo, a.descripcion as descripcion, a.imagen as imagen
-							FROM avisos as a
+			        		$query="SELECT a.id_aviso as id_aviso, a.titulo as titulo, a.descripcion as descripcion, a.imagen as imagen, p.nombre as provincia, c.descripcion as categoria, a.id_pedidoayuda as pedidoayuda
+							FROM avisos as a join provincias as p on a.id_provincia=p.id_provincia join avisos_categorias as c on a.id_categoria=c.id_categoria
 							WHERE a.id_pedidoayuda='1'";
 							$result=mysqli_query($link, $query);
 							$numero_resultados = mysqli_num_rows($result);
@@ -29,28 +30,32 @@
 								while($row = mysqli_fetch_object($result))
 								{
 									echo'<div class="col  m6">';
-										echo'<div class="card medium">';
+										echo'<div class="card large">';
 				              				echo'<div class="card-image waves-effect waves-block waves-light">';
-				               					echo'<img class="activator" src="' . $row->imagen . '">';
+				               					echo'<img class="activator" src="img/' . $row->imagen . '">';
 				              				echo'</div>';
 				              				echo'<div class="card-content">';
 				                				echo'<span class="card-title activator grey-text text-darken-4">' . $row->titulo . '<i class="material-icons right">more_vert</i></span>';
+				                				echo'<p>' . $row->categoria . '</p>';
+				                				echo'<p>' . $row->provincia . '</p>';
 				                   				echo'<div class="row">';
 				                    				echo'<div class="col  m6 offset-m4">';
-				                						echo'<a class="waves-effect waves-light btn-large">AYUDAR</a>';
+				                    				echo'<button type="submit" name="btn_solicitar" class="waves-effect waves-light btn-large">AYUDAR</button>';
 				              						echo'</div>';
 				             					echo'</div>';
 				              				echo'</div>';
 				              				echo'<div class="card-reveal">';
 				                				echo'<span class="card-title grey-text text-darken-4">' . $row->titulo . '<i class="material-icons right">close</i></span>';
 				                				echo'<p>' . $row->descripcion . '</p>';
+				                				echo'<input type="hidden" name="id_aviso" value="' . $row->id_aviso . '">';
+				                				echo'<input type="hidden" name="pedidoayuda" value="' . $row->pedidoayuda . '">';
 				              				echo'</div>';
 				            			echo'</div>';
 				        			echo'</div>';
 				        		}
 				        	}
 			        	?>
-
+			        	</form>
 			       		
 
 	        		</div>
