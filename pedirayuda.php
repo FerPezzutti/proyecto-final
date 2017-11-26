@@ -31,7 +31,7 @@
 									echo'<div class="col  m6">';
 										echo'<div class="card medium">';
 				              				echo'<div class="card-image waves-effect waves-block waves-light">';
-				               					echo'<img class="activator" src="' . $row->imagen . '">';
+				               					echo'<img class="activator" src="img/' . $row->imagen . '">';
 				              				echo'</div>';
 				              				echo'<div class="card-content">';
 				                				echo'<span class="card-title activator grey-text text-darken-4">' . $row->titulo . '<i class="material-icons right">more_vert</i></span>';

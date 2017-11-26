@@ -11,10 +11,36 @@
   </head>
   <body>
   	<?php include ('navbarperfil.php'); ?>
-    <main>      
-	
+    <main>
+      <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+          <div class="col s12 m6">
+            <div class="collection">
+              <?php
+                $user = $_SESSION['user'];
+                $query="SELECT u.nombre as nombre, u.apellido as apellido, u.email as email, u.password as password, u.documento as documento, u.direccion as direccion, u.localidad as localidad, u.cod_postal as codigopostal, p.nombre as provincia, u.telefono as telefono, ut.nombre_tipo as usuariotipo
+                FROM usuarios as u join provincias as p on u.id_provincia_fk=p.id_provincia join usuarios_tipo as ut on u.id_usuariotipo_fk=ut.id_usuariotipo
+                WHERE u.email= '$user'";
+                $result=mysqli_query($link, $query);
+                $row = mysqli_fetch_object($result);
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->nombre . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->apellido . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->email . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->password . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->documento . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->direccion . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->localidad . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->codigopostal . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->provincia . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->telefono . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->usuariotipo . '</a>';
+              ?>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
-
+	
     <!--  Scripts-->
  
     <script src="js/materialize.js"></script>

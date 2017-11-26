@@ -24,10 +24,10 @@
                       <div class="row">
                         <label for="tipoayuda">Tipo de aviso: </label>
                         <p>
-                          <input name="tipoayuda" type="radio" id="necesito" value="1" />
-                          <label for="necesito">Necesito</label>
-                          <input name="tipoayuda" type="radio" id="ofrezco" value="2" />
-                          <label for="ofrezco">Ofrezco</label>
+                          <input name="tipoayuda" type="radio" id="necesito1" value="1" />
+                          <label for="necesito1">Necesito</label>
+                          <input name="tipoayuda" type="radio" id="ofrezco1" value="2" />
+                          <label for="ofrezco1">Ofrezco</label>
                         </p>
                       </div>
                       <div class="row">
