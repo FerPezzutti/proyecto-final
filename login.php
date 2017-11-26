@@ -50,7 +50,7 @@
           </form>
         </div>
       </div>
-      <a href="registrarse.php">Registrarse</a>
+      <a href="registrarse.php">¿No estas registrado?</a>
     </div>
   </div>
 </center>

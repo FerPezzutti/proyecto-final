@@ -11,12 +11,12 @@
   $numero_filas = mysqli_num_rows($result);
   if ($numero_filas==null){
   echo '<p></p>';
-  header("Location: login.php");
+  header("Location: resumen.php");
   exit;
   } else {
     session_start();
     $_SESSION['user'] = $email;
-    header("Location: perfil.php");
+    header("Location: resumen.php");
     }
 
 ?>

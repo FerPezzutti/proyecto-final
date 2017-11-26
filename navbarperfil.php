@@ -2,8 +2,8 @@
     <nav class="teal lighten-2" role="navigation">
 		<div class="nav-wrapper container">
 	        	<ul class="right">
-					<li><?php echo $_SESSION['user']; ?><i class="material-icons">account_circle</i></li>
-					<li><a href="logout.php" class="white-text">Salir<i class="material-icons">exit_to_app</i></a></li>
+					<li><?php echo $_SESSION['user']; ?><i class="material-icons left">account_circle</i></li>
+					<li><a href="logout.php" class="white-text">Salir<i class="material-icons left">exit_to_app</i></a></li>
 				</ul>
 	    </div>
 	</nav>
@@ -12,8 +12,7 @@
 		<li class="logo"><img id="logohome" src="images/logoblanco.png" width="250px"/>
 		<li class="bold"><a href="resumen.php" class="waves-effect waves-teal">Resumen</a></li>
 		<li class="bold"><a href="perfil.php" class="waves-effect waves-teal">Mi Perfil</a></li>
-		<li class="bold"><a href="ayudar.php" class="waves-effect waves-teal">Ofrece tu ayuda</a></li>
-		<li class="bold"><a href="pedirayuda.php" class="waves-effect waves-teal">Encontra lo que necesitas</a></li>
-		<li class="bold"><a href="publicarayuda.php" class="waves-effect waves-teal">Publicar una ayuda</a></li>
-		<li class="bold"><a href="publicarpedido.php" class="waves-effect waves-teal">Publicar un pedido</a></li>
+		<li class="bold"><a href="ayudar.php" class="waves-effect waves-teal">Quiero ayudar</a></li>
+		<li class="bold"><a href="pedirayuda.php" class="waves-effect waves-teal">Necesito ayuda</a></li>
+		<li class="bold"><a href="publicar.php" class="waves-effect waves-teal">Publicar aviso</a></li>
 	</ul>

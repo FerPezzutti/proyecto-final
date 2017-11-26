@@ -23,7 +23,7 @@
 			<div class="row">
 				<div class="col s12 m6">
 					<div class="icon-block">
-						<h2 class="center homeicons"><img id="manonecesito" src="images/necesito.png" /></h2>
+						<h2 class="center homeicons"><a href="login.php"><img id="manonecesito" src="images/necesito.png" /></a></h2>
 						<h5 class="center homeh5">Necesito</h5>
 						<br>
 						<p class="light center">Publica lo que necesites para que otros puedan ayudarte.</p>
@@ -32,7 +32,7 @@
 
 			    <div class="col s12 m6">
 					<div class="icon-block">
-						<h2 class="center homeicons"><img id="manoofrezco" src="images/ofrezco.png" /></h2>
+						<h2 class="center homeicons"><a href="login.php"><img id="manoofrezco" src="images/ofrezco.png" /></a></h2>
 						<h5 class="center homeh5">Ofrezco</h5>
 						<br>
 						<p class="light center">Ayuda a los demás y suma puntos para que también te ayuden a vos.</p>
