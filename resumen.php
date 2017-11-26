@@ -46,7 +46,7 @@
                     $numero_filas = mysqli_num_rows($result);
 
                     if ($numero_filas==null){
-                    echo'<p>No hay</p>';
+                    echo'<p>No tiene publicaciones</p>';
                     } else{
                       while($row = mysqli_fetch_object($result))
                         {
@@ -59,14 +59,52 @@
               <li>
                 <div class="collapsible-header">
                   Mis Ayudas
-                  <span class="badge">1</span></div>
+                  <span class="badge">
+                    7
+                  </span>
+                </div>
                 <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
               </li>
               <li>
                 <div class="collapsible-header">
-                  Mis Pedidos
-                  <span class="badge">4</span></div>
-                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                  Mis Solicitudes
+                  <span class="badge">
+                    <?php
+                      $userid = $_SESSION['id'];
+                      $query="SELECT a.titulo as titulo
+                      FROM avisos_usuarios as au join avisos as a on au.id_aviso=a.id_aviso
+                      WHERE au.id_usuario= '$userid'";
+                      $result=mysqli_query($link, $query);
+                      $numero_filas = mysqli_num_rows($result);
+
+                      if ($numero_filas==null){
+                      echo'0';
+                      } else{
+                        echo $numero_filas;
+                        }
+                    ?>
+                  </span>
+                </div>
+                <div class="collapsible-body">
+                  <?php
+                    $userid = $_SESSION['id'];
+
+                    $query="SELECT a.titulo as titulo
+                    FROM avisos_usuarios as au join avisos as a on au.id_aviso=a.id_aviso
+                    WHERE au.id_usuario= '$userid'";
+                    $result=mysqli_query($link, $query);
+                    $numero_filas = mysqli_num_rows($result);
+
+                    if ($numero_filas==null){
+                    echo'<p>No hay</p>';
+                    } else{
+                      while($row = mysqli_fetch_object($result))
+                        {
+                          echo'<p>' . $row->titulo . '</p>';
+                        }
+                      }
+                  ?>
+                </div>
               </li>
             </ul>
           </div>
