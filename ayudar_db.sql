@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-11-2017 a las 08:01:19
+-- Tiempo de generación: 27-11-2017 a las 02:00:48
 -- Versión del servidor: 10.1.24-MariaDB
 -- Versión de PHP: 7.1.6
 
@@ -106,6 +106,18 @@ CREATE TABLE `avisos_tipo` (
 INSERT INTO `avisos_tipo` (`id_avisotipo`, `nombre_tipo`) VALUES
 (1, 'Servicio'),
 (2, 'Producto');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `avisos_usuarios`
+--
+
+CREATE TABLE `avisos_usuarios` (
+  `id_usuario` int(11) NOT NULL,
+  `id_aviso` int(11) NOT NULL,
+  `id_pedidoayuda` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -243,6 +255,13 @@ ALTER TABLE `avisos_tipo`
   ADD KEY `id_avisotipo` (`id_avisotipo`);
 
 --
+-- Indices de la tabla `avisos_usuarios`
+--
+ALTER TABLE `avisos_usuarios`
+  ADD KEY `id_aviso` (`id_aviso`),
+  ADD KEY `id_usuario` (`id_usuario`);
+
+--
 -- Indices de la tabla `pedidoayuda`
 --
 ALTER TABLE `pedidoayuda`
@@ -320,6 +339,13 @@ ALTER TABLE `avisos`
   ADD CONSTRAINT `avisos_ibfk_3` FOREIGN KEY (`id_pedidoayuda`) REFERENCES `pedidoayuda` (`id_pedidoayuda`) ON UPDATE CASCADE,
   ADD CONSTRAINT `avisos_ibfk_4` FOREIGN KEY (`id_provincia`) REFERENCES `provincias` (`id_provincia`) ON UPDATE CASCADE,
   ADD CONSTRAINT `avisos_ibfk_5` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `avisos_usuarios`
+--
+ALTER TABLE `avisos_usuarios`
+  ADD CONSTRAINT `avisos_usuarios_ibfk_1` FOREIGN KEY (`id_aviso`) REFERENCES `avisos` (`id_aviso`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `avisos_usuarios_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuarios`
