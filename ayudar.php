@@ -18,9 +18,10 @@
 			        <div class="row">
 			        	<form method="post" name="formcard" action="postulacion.php">
 			        	<?php
+			        		$userid = $_SESSION['id'];
 			        		$query="SELECT a.id_aviso as id_aviso, a.titulo as titulo, a.descripcion as descripcion, a.imagen as imagen, p.nombre as provincia, c.descripcion as categoria, a.id_pedidoayuda as pedidoayuda
 							FROM avisos as a join provincias as p on a.id_provincia=p.id_provincia join avisos_categorias as c on a.id_categoria=c.id_categoria
-							WHERE a.id_pedidoayuda='1'";
+							WHERE a.id_pedidoayuda='1' and NOT a.id_usuario='$userid'";
 							$result=mysqli_query($link, $query);
 							$numero_resultados = mysqli_num_rows($result);
 
