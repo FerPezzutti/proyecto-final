@@ -39,8 +39,8 @@
 					              				echo'</div>';
 					              				echo'<div class="card-content">';
 					                				echo'<span class="card-title activator grey-text text-darken-4">' . $row->titulo . '<i class="material-icons right">more_vert</i></span>';
-					                				echo'<p>' . $row->categoria . '</p>';
-					                				echo'<p>' . $row->provincia . '</p>';
+					                				echo'<div class="chip">' . $row->categoria . '</div>';
+				                					echo'<div class="chip">' . $row->provincia . '</div>';
 					                   				echo'<div class="row">';
 					                    				echo'<div class="col  m6 offset-m4">';
 					                    				echo'<button type="submit" name="btn_solicitar" class="waves-effect waves-light btn-large">SOLICITAR</button>';

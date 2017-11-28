@@ -22,13 +22,29 @@
                   <div class="row">
                     <form class="col s12" action="validaraviso.php" method="post" onSubmit="" enctype="multipart/form-data">
                       <div class="row">
-                        <label for="tipoayuda">Tipo de aviso: </label>
-                        <p>
-                          <input name="tipoayuda" type="radio" id="necesito1" value="1" />
-                          <label for="necesito1">Necesito</label>
-                          <input name="tipoayuda" type="radio" id="ofrezco1" value="2" />
-                          <label for="ofrezco1">Ofrezco</label>
-                        </p>
+                        <div class="col s6">
+                          <label for="tipoayuda">Tipo de aviso: </label>
+                          <p>
+                            <input name="tipoayuda" type="radio" id="necesito1" value="1" />
+                            <label for="necesito1">Necesito</label>
+                            <input name="tipoayuda" type="radio" id="ofrezco1" value="2" />
+                            <label for="ofrezco1">Ofrezco</label>
+                          </p>
+                        </div>
+                        <div class="input-field col s6">
+                          <select id="categoria" name="categoria">
+                            <option value="" disabled selected>Seleccione una categoria</option>
+                              <?php
+                                $query="SELECT * FROM avisos_categorias";
+                                $result=mysqli_query($link, $query);
+                                while($row = mysqli_fetch_object($result))
+                                {
+                                echo "<option value=" . $row->id_categoria . ">" . $row->descripcion . "</option>";
+                                }
+                              ?>
+                          </select>
+                          <label>Categoría</label>
+                        </div>
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
@@ -53,29 +69,13 @@
                         </div>
                       </div>
                       <div class="row">
+                        <div class="col s6">
                           <input name="tipoaviso" type="radio" id="test1" value="1" />
                           <label for="test1">Servicio</label>
                           <input name="tipoaviso" type="radio" id="test2" value="2" />
                           <label for="test2">Producto</label>
-                      </div>
-                      <div class="row">
-                        <div class="input-field col s12">
-                          <select id="categoria" name="categoria">
-                            <option value="" disabled selected>Seleccione una categoria</option>
-                              <?php
-                                $query="SELECT * FROM avisos_categorias";
-                                $result=mysqli_query($link, $query);
-                                while($row = mysqli_fetch_object($result))
-                                {
-                                echo "<option value=" . $row->id_categoria . ">" . $row->descripcion . "</option>";
-                                }
-                              ?>
-                          </select>
-                          <label>Categoría</label>
                         </div>
-                      </div>
-                      <div class="row">
-                        <div class="input-field col s6">
+                          <div class="input-field col s6">
                           <select id="provincia" name="provincia">
                             <option value="" disabled selected>Seleccione una provincia</option>
                               <?php
