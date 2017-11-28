@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-11-2017 a las 02:00:48
+-- Tiempo de generación: 28-11-2017 a las 08:59:57
 -- Versión del servidor: 10.1.24-MariaDB
 -- Versión de PHP: 7.1.6
 
@@ -47,7 +47,7 @@ CREATE TABLE `avisos` (
 INSERT INTO `avisos` (`id_aviso`, `titulo`, `descripcion`, `imagen`, `id_categoria`, `id_provincia`, `id_aviso_tipo`, `id_pedidoayuda`, `id_usuario`) VALUES
 (45, 'Bicicleta MTB', 'Bicicleta usada en excelente estado, casi nueva!', 'bicicleta.jpg', 7, 1, 2, 2, 1),
 (46, 'Alimentos no perecederos', '10 kilos de fideos, polenta y harina', 'alimentos.jpg', 1, 3, 2, 2, 1),
-(48, 'Mecanico', 'Necesito servicio mecanico para un dodge 1500', 'mecanico.jpg', 14, 2, 1, 1, 9);
+(49, 'Pintar mi casa', 'Necesito dos pintores para pintar mi casa', 'pintores.jpg', 11, 7, 1, 1, 9);
 
 -- --------------------------------------------------------
 
@@ -114,10 +114,40 @@ INSERT INTO `avisos_tipo` (`id_avisotipo`, `nombre_tipo`) VALUES
 --
 
 CREATE TABLE `avisos_usuarios` (
+  `id_avisosusuarios` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `id_aviso` int(11) NOT NULL,
-  `id_pedidoayuda` int(11) NOT NULL
+  `id_pedidoayuda` int(11) NOT NULL,
+  `id_estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `avisos_usuarios`
+--
+
+INSERT INTO `avisos_usuarios` (`id_avisosusuarios`, `id_usuario`, `id_aviso`, `id_pedidoayuda`, `id_estado`) VALUES
+(4, 9, 45, 2, 1),
+(5, 9, 46, 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estado_avisos`
+--
+
+CREATE TABLE `estado_avisos` (
+  `id_estadoavisos` int(11) NOT NULL,
+  `descripcion` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `estado_avisos`
+--
+
+INSERT INTO `estado_avisos` (`id_estadoavisos`, `descripcion`) VALUES
+(1, 'Pendiente'),
+(2, 'Rechazado'),
+(3, 'Aceptado');
 
 -- --------------------------------------------------------
 
@@ -258,8 +288,17 @@ ALTER TABLE `avisos_tipo`
 -- Indices de la tabla `avisos_usuarios`
 --
 ALTER TABLE `avisos_usuarios`
+  ADD PRIMARY KEY (`id_avisosusuarios`),
   ADD KEY `id_aviso` (`id_aviso`),
-  ADD KEY `id_usuario` (`id_usuario`);
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `estado` (`id_estado`),
+  ADD KEY `id_pedidoayuda` (`id_pedidoayuda`);
+
+--
+-- Indices de la tabla `estado_avisos`
+--
+ALTER TABLE `estado_avisos`
+  ADD PRIMARY KEY (`id_estadoavisos`);
 
 --
 -- Indices de la tabla `pedidoayuda`
@@ -295,7 +334,7 @@ ALTER TABLE `usuarios_tipo`
 -- AUTO_INCREMENT de la tabla `avisos`
 --
 ALTER TABLE `avisos`
-  MODIFY `id_aviso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_aviso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT de la tabla `avisos_categorias`
 --
@@ -306,6 +345,16 @@ ALTER TABLE `avisos_categorias`
 --
 ALTER TABLE `avisos_tipo`
   MODIFY `id_avisotipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `avisos_usuarios`
+--
+ALTER TABLE `avisos_usuarios`
+  MODIFY `id_avisosusuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT de la tabla `estado_avisos`
+--
+ALTER TABLE `estado_avisos`
+  MODIFY `id_estadoavisos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `pedidoayuda`
 --
@@ -345,7 +394,9 @@ ALTER TABLE `avisos`
 --
 ALTER TABLE `avisos_usuarios`
   ADD CONSTRAINT `avisos_usuarios_ibfk_1` FOREIGN KEY (`id_aviso`) REFERENCES `avisos` (`id_aviso`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `avisos_usuarios_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `avisos_usuarios_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `avisos_usuarios_ibfk_3` FOREIGN KEY (`id_estado`) REFERENCES `estado_avisos` (`id_estadoavisos`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `avisos_usuarios_ibfk_4` FOREIGN KEY (`id_pedidoayuda`) REFERENCES `pedidoayuda` (`id_pedidoayuda`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuarios`
