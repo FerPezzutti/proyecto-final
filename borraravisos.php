@@ -2,6 +2,7 @@
   require_once("conexion.php");
   session_start();
   $id = $_POST['id'];
+  $titulo = $_POST['titulo'];
   
   if(isset($_POST['tacho'])) 
 { 
@@ -13,6 +14,9 @@
 } 
 else if(isset($_POST['lupa'])) 
 { 
+	$id = $_POST['id'];
+	$_SESSION['idaviso'] = $id;
+	$_SESSION['titulo'] = $titulo;
   header("Location: postulados.php");
 }  
 

@@ -53,6 +53,7 @@
                         {
                           echo'<form action="borraravisos.php" method="post">';
                           echo'<input type="hidden" name="id" value="' . $row->id_aviso . '">';
+                          echo'<input type="hidden" name="titulo" value="' . $row->titulo . '">';
                           echo'<div class="row">
                                 <div class="col s8"><p>' . $row->titulo . '</p></div>
                                 <div class="col s4">
@@ -65,9 +66,6 @@
                       }
                   ?>
                 </div>
-
-                  
-
               </li>
               <li>
                 <div class="collapsible-header">
