@@ -69,7 +69,7 @@
                   <div id="modal1" class="modal bottom-sheet">
                     <div class="modal-content">
                       <?php
-                        $query="SELECT USU.id_usuario, USU.nombre, PROV.id_provincia, PROV.nombre, AVI.id_aviso, AVI.titulo, AVI.descripcion FROM usuarios USU INNER JOIN avisos_usuarios AUSU ON USU.id_usuario = AUSU.id_usuario INNER JOIN avisos AVI ON AUSU.id_aviso = AVI.id_aviso INNER JOIN provincias PROV ON USU.id_provincia_fk = PROV.id_provincia WHERE AUSU.id_aviso = '45'";
+                        $query="SELECT USU.id_usuario, USU.nombre as usuario, PROV.id_provincia, PROV.nombre as provincia, AVI.id_aviso, AVI.titulo as titulo, AVI.descripcion FROM usuarios USU INNER JOIN avisos_usuarios AUSU ON USU.id_usuario = AUSU.id_usuario INNER JOIN avisos AVI ON AUSU.id_aviso = AVI.id_aviso INNER JOIN provincias PROV ON USU.id_provincia_fk = PROV.id_provincia WHERE AUSU.id_aviso = '41'";
 
                         $result=mysqli_query($link, $query);
                         $numero_filas = mysqli_num_rows($result);
