@@ -77,7 +77,17 @@
                         </div>
                           <div class="input-field col s6">
                           <select id="provincia" name="provincia">
-                            <option value="" disabled selected>Seleccione una provincia</option>
+                            <option value="" disabled selected>
+                              <?php
+                                $id_usuario = $_SESSION['id'];
+                                $query="SELECT p.nombre as provincia
+                                        FROM usuarios as u join provincias as p on u.id_provincia_fk=p.id_provincia
+                                        WHERE u.id_usuario='$id_usuario'";
+                                $result=mysqli_query($link, $query);
+                                $row = mysqli_fetch_object($result);
+                                echo $row->provincia;
+                              ?>
+                            </option>
                               <?php
                                 $query="SELECT * FROM provincias";
                                 $result=mysqli_query($link, $query);

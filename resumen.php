@@ -48,21 +48,19 @@
                     if ($numero_filas==null){
                     echo'<p>No tiene publicaciones</p>';
                     } else{
+                      echo'<form action="borraravisos.php" method="post">';
                       while($row = mysqli_fetch_object($result))
                         {
-                          echo'<form action="borraravisos.php" method="post">';
                           echo'<input type="hidden" name="id" value="' . $row->id_aviso . '">';
                           echo'<div class="row">
-                                <div class="col s1">
-                                  <button class="btn-floating btn-small waves-effect waves-light orange"><i class="material-icons">delete</i></button>
-                                </div>
                                 <div class="col s8"><p>' . $row->titulo . '</p></div>
-                                <div class="col s3">
-                                  <span class="badge"><a class="waves-effect waves-light btn modal-trigger" href="#modal1">Ver interesados</a></span>
+                                <div class="col s4">
+                                  <span class="badge"><button class="btn-floating btn-small waves-effect waves-light orange tooltipped data-position="bottom" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete</i></button></span>
+                                  <span class="badge"><a class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver interesados"" href="#modal1"><i class="material-icons">search</i></a></span>
                                 </div>
                               </div>';
-                          echo'</form>';
                         }
+                        echo'</form>';
                       }
                   ?>
                 </div>
@@ -135,21 +133,22 @@
                     if ($numero_filas==null){
                     echo'<p>No posee ayudas pendientes</p>';
                     } else{
+                      echo'<form action="borrar.php" method="post">';
                       while($row = mysqli_fetch_object($result))
                         {
-                          echo'<form action="borrar.php" method="post">';
                           echo'<input type="hidden" name="id" value="' . $row->id . '">';
                           echo'<div class="row">
+                                <div class="col s9"><p>' . $row->titulo . '</p></div>
                                 <div class="col s1">
-                                  <button class="btn-floating btn-small waves-effect waves-light orange"><i class="material-icons">delete</i></button>
-                                </div>
-                                <div class="col s8"><p>' . $row->titulo . '</p></div>
-                                <div class="col s3">
                                   <span class="badge">' . $row->estado . '</span>
                                 </div>
+                                <div class="col s2">
+                                  <span class="badge"><button class="btn-floating btn-small waves-effect waves-light orange tooltipped data-position="bottom" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete</i></button></span>
+                                  <span class="badge"><a class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver interesados"" href="#modal1"><i class="material-icons">search</i></a></span>
+                                </div>
                               </div>';
-                          echo'</form>';
                         }
+                        echo'</form>';
                       }
                   ?>
                 </div>
