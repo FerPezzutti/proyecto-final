@@ -91,7 +91,7 @@
                   <?php
                     $userid = $_SESSION['id'];
 
-                    $query="SELECT a.titulo as titulo, au.id_avisosusuarios as id, ea.descripcion as estado
+                    $query="SELECT a.titulo as titulo, au.id_avisosusuarios as id, ea.descripcion as estado, au.id_estado as idestado, a.id_usuario as datosusuario
                     FROM avisos_usuarios as au join avisos as a on au.id_aviso=a.id_aviso join estado_avisos as ea on au.id_estado=ea.id_estadoavisos
                     WHERE au.id_usuario= '$userid' and au.id_pedidoayuda='1'";
                     $result=mysqli_query($link, $query);
@@ -100,22 +100,29 @@
                     if ($numero_filas==null){
                     echo'<p>No posee ayudas pendientes</p>';
                     } else{
-                      echo'<form action="borrar.php" method="post">';
+                      
                       while($row = mysqli_fetch_object($result))
                         {
+                        	echo'<form action="borrar.php" method="post">';
                           echo'<input type="hidden" name="id" value="' . $row->id . '">';
+                          echo'<input type="hidden" name="datosusuario" value="' . $row->datosusuario . '">';
                           echo'<div class="row">
                                 <div class="col s9"><p>' . $row->titulo . '</p></div>
-                                <div class="col s1">
-                                  <span class="badge">' . $row->estado . '</span>
-                                </div>
-                                <div class="col s2">
-                                  <span class="badge"><button class="btn-floating btn-small waves-effect waves-light orange tooltipped data-position="bottom" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete</i></button></span>
-                                  <span class="badge"><a class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver interesados" href="#modal1"><i class="material-icons">search</i></a></span>
-                                </div>
+                                <div class="col s3">';
+                            if($row->idestado==1){
+                              echo '<p>Pendiente</p>';
+                              echo'<span class="badge"><button class="btn-floating btn-small waves-effect waves-light orange tooltipped data-position="bottom" data-delay="50" data-tooltip="Eliminar" name="borrar"><i class="material-icons">delete</i></button></span>';
+                            } else if($row->idestado==3){
+                                echo '<p>Aprobado</p>';
+                                echo '<span class="badge"><button class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver interesados" name="lupa"><i class="material-icons">search</i></button></span>';
+                            } else {
+                                echo '<p>Rechazado</p>';
+                            }
+                              echo'</div>
                               </div>';
+                              echo'</form>';
                         }
-                        echo'</form>';
+                        
                       }
                   ?>
                 </div>
@@ -144,7 +151,7 @@
                   <?php
                     $userid = $_SESSION['id'];
 
-                    $query="SELECT a.titulo as titulo, au.id_avisosusuarios as id, ea.descripcion as estado
+                    $query="SELECT a.titulo as titulo, au.id_avisosusuarios as id, ea.descripcion as estado, au.id_estado as idestado, a.id_usuario as datosusuario
                     FROM avisos_usuarios as au join avisos as a on au.id_aviso=a.id_aviso join estado_avisos as ea on au.id_estado=ea.id_estadoavisos
                     WHERE au.id_usuario= '$userid' and au.id_pedidoayuda='2'";
                     $result=mysqli_query($link, $query);
@@ -153,20 +160,27 @@
                     if ($numero_filas==null){
                     echo'<p>No posee solicitudes pendientes</p>';
                     } else{
+
                       while($row = mysqli_fetch_object($result))
                         {
-                          echo'<form action="borrar.php" method="post">';
+                        	echo'<form action="borrar.php" method="post">';
                           echo'<input type="hidden" name="id" value="' . $row->id . '">';
+                          echo'<input type="hidden" name="datosusuario" value="' . $row->datosusuario . '">';
                           echo'<div class="row">
-                                <div class="col s1">
-                                  <button class="btn-floating btn-small waves-effect waves-light orange"><i class="material-icons">delete</i></button>
-                                </div>
-                                <div class="col s8"><p>' . $row->titulo . '</p></div>
-                                <div class="col s3">
-                                  <span class="badge">' . $row->estado . '</span>
-                                </div>
+                                <div class="col s9"><p>' . $row->titulo . '</p></div>
+                                <div class="col s3">';
+                            if($row->idestado==1){
+                              echo '<p>Pendiente</p>';
+                              echo'<span class="badge"><button class="btn-floating btn-small waves-effect waves-light orange tooltipped data-position="bottom" data-delay="50" data-tooltip="Eliminar" name="borrar"><i class="material-icons">delete</i></button></span>';
+                            } else if($row->idestado==3){
+                                echo '<p>Aprobado</p>';
+                                echo '<span class="badge"><button class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver interesados" name="lupa"><i class="material-icons">search</i></button></span>';
+                            } else {
+                                echo '<p>Rechazado</p>';
+                            }
+                              echo'</div>
                               </div>';
-                          echo'</form>';
+                              echo'</form>';
                         }
                       }
                   ?>

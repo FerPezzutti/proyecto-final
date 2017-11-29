@@ -11,7 +11,7 @@
           WHERE id_aviso = $idaviso and id_usuario = $idusuario";
   mysqli_query($link, $query);
   mysqli_close($link);
-  header("Location: resumen.php");
+  header("Location: postulados.php");
 } 
 else if(isset($_POST['rechazar'])) 
 { 
@@ -20,12 +20,13 @@ else if(isset($_POST['rechazar']))
           WHERE id_aviso = $idaviso and id_usuario = $idusuario";
   mysqli_query($link, $query);
   mysqli_close($link);
-  header("Location: resumen.php");
+  header("Location: postulados.php");
 }  
 
   if(isset($_POST['lupa'])) 
 { 
-  header("Location: resumen.php");
+  $_SESSION['postulado']=$idusuario;
+  header("Location: perfilpostulado.php");
 } 
   
 ?>
