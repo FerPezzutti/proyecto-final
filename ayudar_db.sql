@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2017 a las 08:59:57
+-- Tiempo de generación: 29-11-2017 a las 20:25:33
 -- Versión del servidor: 10.1.24-MariaDB
 -- Versión de PHP: 7.1.6
 
@@ -45,9 +45,7 @@ CREATE TABLE `avisos` (
 --
 
 INSERT INTO `avisos` (`id_aviso`, `titulo`, `descripcion`, `imagen`, `id_categoria`, `id_provincia`, `id_aviso_tipo`, `id_pedidoayuda`, `id_usuario`) VALUES
-(45, 'Bicicleta MTB', 'Bicicleta usada en excelente estado, casi nueva!', 'bicicleta.jpg', 7, 1, 2, 2, 1),
-(46, 'Alimentos no perecederos', '10 kilos de fideos, polenta y harina', 'alimentos.jpg', 1, 3, 2, 2, 1),
-(49, 'Pintar mi casa', 'Necesito dos pintores para pintar mi casa', 'pintores.jpg', 11, 7, 1, 1, 9);
+(46, 'Alimentos no perecederos', '10 kilos de fideos, polenta y harina', 'alimentos.jpg', 1, 3, 2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -126,8 +124,8 @@ CREATE TABLE `avisos_usuarios` (
 --
 
 INSERT INTO `avisos_usuarios` (`id_avisosusuarios`, `id_usuario`, `id_aviso`, `id_pedidoayuda`, `id_estado`) VALUES
-(4, 9, 45, 2, 1),
-(5, 9, 46, 2, 1);
+(5, 9, 46, 2, 3),
+(10, 10, 46, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -235,7 +233,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `email`, `password`, `documento`, `direccion`, `localidad`, `cod_postal`, `id_provincia_fk`, `telefono`, `id_usuariotipo_fk`) VALUES
 (1, 'admin', 'admin', 'admin@admin.com', 'admin', 31933140, 'alegria 1185 dto 9', 'haedo', 1704, 1, 46569921, 1),
-(9, 'Fernanda', 'Pezzutti', 'ferpezzutti@gmail.com', 'ramosmejia', 31933140, 'Alegria 1185, apt 9', 'Haedo', 1706, 1, 1146505948, 1);
+(9, 'Fernanda', 'Pezzutti', 'ferpezzutti@gmail.com', 'ramosmejia', 31933140, 'Alegria 1185, apt 9', 'Haedo', 1706, 1, 1146505948, 1),
+(10, 'Julieta', 'Ramon', 'julietaramon@gmail.com', 'ramona', 35555555, 'rivadavia 2345', 'caballito', 1758, 1, 44445555, 1);
 
 -- --------------------------------------------------------
 
@@ -334,7 +333,7 @@ ALTER TABLE `usuarios_tipo`
 -- AUTO_INCREMENT de la tabla `avisos`
 --
 ALTER TABLE `avisos`
-  MODIFY `id_aviso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_aviso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 --
 -- AUTO_INCREMENT de la tabla `avisos_categorias`
 --
@@ -349,7 +348,7 @@ ALTER TABLE `avisos_tipo`
 -- AUTO_INCREMENT de la tabla `avisos_usuarios`
 --
 ALTER TABLE `avisos_usuarios`
-  MODIFY `id_avisosusuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_avisosusuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `estado_avisos`
 --
@@ -369,7 +368,7 @@ ALTER TABLE `provincias`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `usuarios_tipo`
 --
