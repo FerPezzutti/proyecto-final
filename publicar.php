@@ -88,7 +88,10 @@
                               ?>
                             
                               <?php
-                                $query="SELECT * FROM provincias";
+                                $idprovincia = $_SESSION['provincia'];
+                                $query="SELECT * 
+                                        FROM provincias
+                                        WHERE NOT id_provincia='$idprovincia'";
                                 $result=mysqli_query($link, $query);
                                 while($row = mysqli_fetch_object($result))
                                 {

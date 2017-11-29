@@ -18,6 +18,7 @@
     session_start();
     $_SESSION['user'] = $email;
     $_SESSION['id'] = $row->id_usuario;
+    $_SESSION['provincia'] = $row->id_provincia_fk;
     header("Location: resumen.php");
     }
 
