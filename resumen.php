@@ -69,8 +69,8 @@
                   <div id="modal1" class="modal bottom-sheet">
                     <div class="modal-content">
                       <?php
-                        $query="SELECT a.titulo as titulo
-                        FROM avisos_usuarios as au join avisos as a on au.id_aviso=a.id_aviso
+                        $query="SELECT a.titulo as titulo, u.nombre as usuario, p.nombre as provincia
+                        FROM avisos as a join usuarios as u on a.id_usuario=u.id_usuario join provincias as p on a.id_provincia=p.id_provincia join avisos_usuarios as au on a.id_aviso=au.id_aviso
                         WHERE a.id_aviso='45'";
                         $result=mysqli_query($link, $query);
                         $numero_filas = mysqli_num_rows($result);
@@ -78,14 +78,14 @@
                         if ($numero_filas==null){
                         echo'<h4>No hay interesados en' . $row->titulo . '</h4>';
                         } else{
-                          echo'<h4>Interesados en</h4>
+                          echo'<h4>Interesados en' . $row->titulo . '</h4>
                                 <ul class="collection">';
                           while($row = mysqli_fetch_object($result))
                             {
                               echo'<li class="collection-item avatar">
                                     <img src="images/user.svg" alt="" class="circle">
-                                    <span class="title">nombre</span>
-                                    <p>localidad</p>
+                                    <span class="title">' . $row->usuario . '</span>
+                                    <p>' . $row->provincia . '</p>
                                     <a class="btn-floating btn-small waves-effect waves-light secondary-content" href=""><i class="material-icons">check</i></a>
                                     <a class="btn-floating btn-small waves-effect waves-light red secondary-content" href=""><i class="material-icons">clear</i></a>
                                   </li>';
