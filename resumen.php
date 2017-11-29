@@ -48,55 +48,25 @@
                     if ($numero_filas==null){
                     echo'<p>No tiene publicaciones</p>';
                     } else{
-                      echo'<form action="borraravisos.php" method="post">';
+                      
                       while($row = mysqli_fetch_object($result))
                         {
+                          echo'<form action="borraravisos.php" method="post">';
                           echo'<input type="hidden" name="id" value="' . $row->id_aviso . '">';
                           echo'<div class="row">
                                 <div class="col s8"><p>' . $row->titulo . '</p></div>
                                 <div class="col s4">
-                                  <span class="badge"><button class="btn-floating btn-small waves-effect waves-light orange tooltipped data-position="bottom" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete</i></button></span>
-                                  <span class="badge"><a class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver interesados"" href="#modal1"><i class="material-icons">search</i></a></span>
+                                  <span class="badge"><button class="btn-floating btn-small waves-effect waves-light orange tooltipped data-position="bottom" data-delay="50" data-tooltip="Eliminar" name="tacho"><i class="material-icons">delete</i></button></span>
+                                  <span class="badge"><button class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver interesados" href="#modal1" name="lupa"><i class="material-icons">search</i></button></span>
                                 </div>
                               </div>';
+                          echo'</form>';
                         }
-                        echo'</form>';
                       }
                   ?>
                 </div>
 
-                  <!-- Modal Structure -->
-                  <div id="modal1" class="modal bottom-sheet">
-                    <div class="modal-content">
-                      <?php
-                        $query="SELECT USU.id_usuario, USU.nombre as usuario, PROV.id_provincia, PROV.nombre as provincia, AVI.id_aviso, AVI.titulo as titulo, AVI.descripcion FROM usuarios USU INNER JOIN avisos_usuarios AUSU ON USU.id_usuario = AUSU.id_usuario INNER JOIN avisos AVI ON AUSU.id_aviso = AVI.id_aviso INNER JOIN provincias PROV ON USU.id_provincia_fk = PROV.id_provincia WHERE AUSU.id_aviso = '41'";
-
-                        $result=mysqli_query($link, $query);
-                        $numero_filas = mysqli_num_rows($result);
-
-                        if ($numero_filas==null){
-                        echo'<h4>No hay interesados en' . $row->titulo . '</h4>';
-                        } else{
-                          echo'<h4>Interesados en' . $row->titulo . '</h4>
-                                <ul class="collection">';
-                          while($row = mysqli_fetch_object($result))
-                            {
-                              echo'<li class="collection-item avatar">
-                                    <img src="images/user.svg" alt="" class="circle">
-                                    <span class="title">' . $row->usuario . '</span>
-                                    <p>' . $row->provincia . '</p>
-                                    <a class="btn-floating btn-small waves-effect waves-light secondary-content" href=""><i class="material-icons">check</i></a>
-                                    <a class="btn-floating btn-small waves-effect waves-light red secondary-content" href=""><i class="material-icons">clear</i></a>
-                                  </li>';
-                            }
-                          echo'</ul>';
-                        }
-                      ?>
-                    </div>
-                    <div class="modal-footer">
-                      <a href="#!" class="modal-action modal-close waves-effect waves-light btn">Aceptar</a>
-                    </div>
-                  </div>
+                  
 
               </li>
               <li>
@@ -143,7 +113,7 @@
                                 </div>
                                 <div class="col s2">
                                   <span class="badge"><button class="btn-floating btn-small waves-effect waves-light orange tooltipped data-position="bottom" data-delay="50" data-tooltip="Eliminar"><i class="material-icons">delete</i></button></span>
-                                  <span class="badge"><a class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver interesados"" href="#modal1"><i class="material-icons">search</i></a></span>
+                                  <span class="badge"><a class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver interesados" href="#modal1"><i class="material-icons">search</i></a></span>
                                 </div>
                               </div>';
                         }
