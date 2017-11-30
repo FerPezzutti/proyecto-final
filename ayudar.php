@@ -43,7 +43,7 @@
 				                					echo'<div class="chip">' . $row->provincia . '</div>';
 					                   				echo'<div class="row">';
 					                    				echo'<div class="col  m6 offset-m4">';
-					                    				echo'<button type="submit" name="btn_solicitar" class="waves-effect waves-light btn-large">SOLICITAR</button>';
+					                    				echo'<button type="submit" name="btn_solicitar" class="waves-effect waves-light btn-large">AYUDAR</button>';
 					              						echo'</div>';
 					             					echo'</div>';
 					              				echo'</div>';
