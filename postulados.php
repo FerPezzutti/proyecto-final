@@ -47,7 +47,9 @@
                               <span class="badge"><button class="btn-floating btn-small waves-effect waves-light red secondary-content tooltipped" href="" data-tooltip="Rechazar" name="rechazar"><i class="material-icons">clear</i></button></span>';
                             } else if($row->estado==3){
                                 echo '<p>Aprobado</p>';
+                                echo '<span class="badge"><button class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Calificar" name="lupa"><i class="material-icons">create</i></button></span>';
                                 echo '<span class="badge"><button class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver Perfil" name="lupa"><i class="material-icons">search</i></button></span>';
+
                             } else {
                                 echo '<p>Rechazado</p>';
                             }

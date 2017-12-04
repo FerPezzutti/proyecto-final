@@ -19,6 +19,7 @@
     $_SESSION['user'] = $email;
     $_SESSION['id'] = $row->id_usuario;
     $_SESSION['provincia'] = $row->id_provincia_fk;
+    $_SESSION['usuariotipo'] = $row->id_usuariotipo_fk;
     header("Location: resumen.php");
     }
 

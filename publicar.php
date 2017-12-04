@@ -104,6 +104,15 @@
                       </div>
                       <div class="row">
                         <div class="input-field col s12">
+                          <?php
+                            $id_usuario = $_SESSION['id'];
+                            $query="SELECT * 
+                                    FROM usuarios
+                                    WHERE id_usuario='$id_usuario'";
+                            $result=mysqli_query($link, $query);
+                            $row = mysqli_fetch_object($result);
+                            echo'<input type="hidden" name="creditosusuario" value="' . $row->creditos . '">';
+                          ?>
                           <button class="btn #ef5350 red lighten-1 waves-effect waves-light right" type="submit" name="action">Crear
                             <i class="mdi-content-send right"></i>
                           </button>

@@ -2,6 +2,15 @@
     <nav class="teal lighten-2" role="navigation">
 		<div class="nav-wrapper container">
 	        	<ul class="right">
+	        		<?php
+		        		$userid = $_SESSION['id'];
+	                    $query="SELECT *
+	                    FROM usuarios
+	                    WHERE id_usuario= '$userid'";
+	                    $result=mysqli_query($link, $query);
+                        $row = mysqli_fetch_object($result);
+	                    echo'<li>' . $row->creditos . ' Creditos<i class="material-icons left">attach_money</i></li>';
+                  	?>
 					<li><a href="perfil.php"><?php echo $_SESSION['user']; ?><i class="material-icons left">account_circle</i></a></li>
 					<li><a href="logout.php" class="white-text">Salir<i class="material-icons left">exit_to_app</i></a></li>
 				</ul>
