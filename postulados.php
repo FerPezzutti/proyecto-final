@@ -32,31 +32,33 @@
                     echo'<form action="estadopostulacion.php" method="post">';
                     echo'<input type="hidden" name="idaviso" value="' . $id . '">';
                     echo'<input type="hidden" name="idusuario" value="' . $row->idusuario . '">';
-                    echo'<div class="row">
-                          <div class="col s8">
-                            <li class="collection-item avatar">
+                    echo'<li class="collection-item avatar">
                               <img src="images/user.svg" alt="" class="circle">
                               <span class="title">' . $row->usuario . ' ' . $row->apellido . '</span>
                               <p>' . $row->provincia . '</p>
-                            </li>
-                          </div>
-                          <div class="col s4">';
+                            
+                          ';
                             if($row->estado==1){
-                              echo '<p>Pendiente</p>';
-                              echo'<span class="badge"><button class="btn-floating btn-small waves-effect waves-light secondary-content tooltipped" href="" data-tooltip="Aprobar" name="aprobar"><i class="material-icons">check</i></button></span>
-                              <span class="badge"><button class="btn-floating btn-small waves-effect waves-light red secondary-content tooltipped" href="" data-tooltip="Rechazar" name="rechazar"><i class="material-icons">clear</i></button></span>';
+                              echo '<p class="orange-text">Pendiente</p>';
+                              echo '<div class="secondary-content divpostulados">';
+                              echo'<span class="badge"><button class="btn-floating btn-small waves-effect waves-light tooltipped" href="" data-tooltip="Aprobar" name="aprobar"><i class="material-icons">check</i></button></span>';
+                              echo '<span class="badge"><button class="btn-floating btn-small waves-effect waves-light red tooltipped" href="" data-tooltip="Rechazar" name="rechazar"><i class="material-icons">clear</i></button></span>';
+                              echo'</div>';
                             } else if($row->estado==3){
-                                echo '<p>Aprobado</p>';
-                                echo '<span class="badge"><button class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Calificar" name="lupa"><i class="material-icons">create</i></button></span>';
-                                echo '<span class="badge"><button class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver Perfil" name="lupa"><i class="material-icons">search</i></button></span>';
+                                echo '<p class="teal-text">Aprobado</p>';
+                                echo '<div class="secondary-content divpostulados">';
+                                echo '<span class="badge"><button class="waves-effect waves-light orange pulse btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Calificar" name="calificar"><i class="material-icons">create</i></button></span>';
+                                echo '<span class="badge"><button class="waves-effect waves-light orange btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver Perfil" name="lupa"><i class="material-icons">search</i></button></span>';
+                                echo'</div>';
 
                             } else {
-                                echo '<p>Rechazado</p>';
+                                echo '<p class="red-text">Rechazado</p>';
                             }
-                          echo'</div>';
-                        echo'</div>';
+                          echo'</li>';
                       echo'</form>';
                   }
+                  echo'</ul>';
+                  echo'<a class="waves-effect waves-light btn orange right">Finalizar Publicacion</a>';
                 }
               ?>
             </ul>

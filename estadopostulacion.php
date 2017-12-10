@@ -28,5 +28,16 @@ else if(isset($_POST['rechazar']))
   $_SESSION['postulado']=$idusuario;
   header("Location: perfilpostulado.php");
 } 
-  
+
+  if(isset($_POST['calificar'])) 
+{ 
+  //al calificar subir 5 puntos al usuario si es positivo, bajar 5 si es negativo
+  $query="UPDATE usuarios
+          SET creditos='2';
+          WHERE id_usuario = 1";
+  mysqli_query($link, $query);
+  mysqli_close($link);
+  header("Location: postulados.php");
+} 
+
 ?>
