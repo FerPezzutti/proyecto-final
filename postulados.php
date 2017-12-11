@@ -35,9 +35,8 @@
                     echo'<li class="collection-item avatar">
                               <img src="images/user.svg" alt="" class="circle">
                               <span class="title">' . $row->usuario . ' ' . $row->apellido . '</span>
-                              <p>' . $row->provincia . '</p>
+                              <p>' . $row->provincia . '</p>';
                             
-                          ';
                             if($row->estado==1){
                               echo '<p class="orange-text">Pendiente</p>';
                               echo '<div class="secondary-content divpostulados">';
@@ -47,13 +46,21 @@
                             } else if($row->estado==3){
                                 echo '<p class="teal-text">Aprobado</p>';
                                 echo '<div class="secondary-content divpostulados">';
-                                echo '<span class="badge"><button class="waves-effect waves-light orange pulse btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Calificar" name="calificar"><i class="material-icons">create</i></button></span>';
-                                echo '<span class="badge"><button class="waves-effect waves-light orange btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver Perfil" name="lupa"><i class="material-icons">search</i></button></span>';
+
+                                echo '<span class="badge"><a class="waves-effect waves-light orange pulse btn-floating btn-small tooltipped dropdown-button btn data-activates="dropdown1" href="calificar.php?id_aviso=' . $id . '&id_usuario=' . $row->idusuario . ' " data-position="bottom" data-delay="50" data-tooltip="Calificar" name="calificar"><i class="material-icons">create</i></a></span>';
+                                echo '<span class="badge"><button class="waves-effect waves-light orange btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver Perfil" name="lupa"><i class="material-icons">info_outline</i></button></span>';
+                                echo'</div>';
+                            } else if($row->estado==4){
+                                echo '<p class="orange-text">Calificado</p>';
+                                echo '<div class="secondary-content divpostulados">';
+
+                                echo '<span class="badge"><button class="waves-effect waves-light orange btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver Perfil" name="lupa"><i class="material-icons">info_outline</i></button></span>';
                                 echo'</div>';
 
                             } else {
                                 echo '<p class="red-text">Rechazado</p>';
                             }
+
                           echo'</li>';
                       echo'</form>';
                   }
@@ -61,7 +68,6 @@
                   echo'<a class="waves-effect waves-light btn orange right">Finalizar Publicacion</a>';
                 }
               ?>
-            </ul>
           </div>
         </div>
       </div>
@@ -71,6 +77,8 @@
  
     <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
-
+    <script> 
+      $('.dropdown-button').dropdown('open');
+    </script>
   </body>
 </html>

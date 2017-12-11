@@ -31,13 +31,11 @@ else if(isset($_POST['rechazar']))
 
   if(isset($_POST['calificar'])) 
 { 
-  //al calificar subir 5 puntos al usuario si es positivo, bajar 5 si es negativo
-  $query="UPDATE usuarios
-          SET creditos='2';
-          WHERE id_usuario = 1";
-  mysqli_query($link, $query);
-  mysqli_close($link);
-  header("Location: postulados.php");
+
+  $_POST['idusuario'] = $idusuario;
+  $_POST['iadviso'] = $idaviso;
+  
+  header("Location: calificar?idusuario=$idusuario&idaviso=$idaviso.php");
 } 
 
 ?>
