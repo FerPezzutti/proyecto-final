@@ -1,4 +1,5 @@
 <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav waves-effect waves-light circle hide-on-large-only"><i class="material-icons">menu</i></a></div>
+<div class="navbar-fixed">
     <nav class="teal lighten-2" role="navigation">
 		<div class="nav-wrapper container">
 	        	<ul class="right">
@@ -16,7 +17,7 @@
 				</ul>
 	    </div>
 	</nav>
-
+</div>
 	<ul id="nav-mobile" class="side-nav fixed red lighten-2">
 		<li class="logo"><img id="logohome" src="images/logoblanco.png" width="250px"/>
 		<li class="bold"><a href="resumen.php" class="waves-effect waves-teal">Resumen<i class="material-icons left white-text small iconosperfil">insert_chart</i></a></li>
