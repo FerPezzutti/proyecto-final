@@ -33,19 +33,21 @@
 								{
 									echo'<div class="col  m12">';
 										echo'<div class="card large">';?>
-											<div class="right">
-												<a href="https://fb.com/sharer/sharer.php?u=" class="btn-simple"><i class="fa fa-facebook"></i> Facebook</a>
-				        						<a href="http://www.twitter.com/share?url="><i class="fa fa-twitter"></i> Twitter</a>
-			        						</div>
 			        						<?php
 				              				echo'<div class="card-image">';
 				               					echo'<img src="img/' . $row->imagen . '">';
 				              				echo'</div>';
-				              				echo'<div class="container">';
-				                				echo'<h4 class="card-title grey-text text-darken-4">' . $row->titulo .'</h4>';
+				              				echo'<div class="container center-align">';
+				                				/*echo'<h4 class="card-title grey-text text-darken-4">' . $row->titulo .'</h4>';*/
+				                				echo'<h5>' . $row->titulo .'</h5>';
 				                				echo'<p>' . $row->descripcion . '</p>';
+				                				
 				              				echo'</div>';
 				            			echo'</div>';
+				            			echo'<div class="center-align">
+												<a href="https://fb.com/sharer/sharer.php?u=" class="btn-simple"><i class="fa fa-facebook"></i> Facebook</a>
+				        						<a href="http://www.twitter.com/share?url="><i class="fa fa-twitter"></i> Twitter</a>
+			        						</div>';
 				        			echo'</div>';
 				        		}
 				        	}
