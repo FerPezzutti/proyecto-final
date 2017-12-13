@@ -20,8 +20,8 @@
 			        	<?php
 			        		$idaviso=$_GET['idaviso'];
 			        		$userid = $_SESSION['id'];
-			        		$query="SELECT a.id_aviso as id_aviso, a.titulo as titulo, a.descripcion as descripcion, a.imagen as imagen
-							FROM avisos as a
+			        		$query="SELECT a.id_aviso as id_aviso, a.titulo as titulo, a.descripcion as descripcion, a.imagen as imagen, p.nombre as provincia, c.descripcion as categoria, a.id_pedidoayuda as pedidoayuda
+							FROM avisos as a join provincias as p on a.id_provincia=p.id_provincia join avisos_categorias as c on a.id_categoria=c.id_categoria
 							WHERE a.id_aviso='$idaviso'";
 							$result=mysqli_query($link, $query);
 							$numero_resultados = mysqli_num_rows($result);
@@ -38,10 +38,10 @@
 				               					echo'<img src="img/' . $row->imagen . '">';
 				              				echo'</div>';
 				              				echo'<div class="container center-align">';
-				                				/*echo'<h4 class="card-title grey-text text-darken-4">' . $row->titulo .'</h4>';*/
 				                				echo'<h5>' . $row->titulo .'</h5>';
-				                				echo'<p>' . $row->descripcion . '</p>';
-				                				
+				                				echo'<div class="chip">' . $row->categoria . '</div>';
+				                				echo'<div class="chip">' . $row->provincia . '</div>';
+				                				echo'<p>' . $row->descripcion . '</p>';				                				
 				              				echo'</div>';
 				            			echo'</div>';
 				            			echo'<div class="center-align">
