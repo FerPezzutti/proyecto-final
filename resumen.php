@@ -59,7 +59,7 @@
                                 <div class="col s4">
                                   <span class="badge"><button class="btn-floating btn-small waves-effect waves-light orange tooltipped data-position="bottom" data-delay="50" data-tooltip="Eliminar" name="tacho"><i class="material-icons">delete</i></button></span>
                                   <span class="badge"><button class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver interesados" href="#modal1" name="lupa"><i class="material-icons">people_outline</i></button></span>
-                                  <span class="badge"><button class="btn-floating btn-small waves-effect waves-light tooltipped" href="" data-tooltip="Ver Aviso" name="veraviso"><i class="material-icons">search</i></button></span>
+                                  <span class="badge"><a class="btn-floating btn-small waves-effect waves-light tooltipped" href="aviso.php?idaviso=' . $row->id_aviso . '" data-tooltip="Ver Aviso" name="veraviso"><i class="material-icons">search</i></a></span>
                                 </div>
                               </div>';
                           echo'</form>';

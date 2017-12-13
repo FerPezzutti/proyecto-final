@@ -22,7 +22,7 @@
 			        		$query="SELECT a.id_aviso as id_aviso, a.titulo as titulo, a.descripcion as descripcion, a.imagen as imagen, p.nombre as provincia, c.descripcion as categoria, a.id_pedidoayuda as pedidoayuda, u.creditos as creditos
 							FROM avisos as a join provincias as p on a.id_provincia=p.id_provincia join avisos_categorias as c on a.id_categoria=c.id_categoria join usuarios as u on a.id_usuario=u.id_usuario
 							WHERE a.id_pedidoayuda='1' and NOT a.id_usuario='$userid'
-							ORDER BY creditos";
+							ORDER BY creditos DESC";
 
 							$result=mysqli_query($link, $query);
 							$numero_resultados = mysqli_num_rows($result);
@@ -34,7 +34,7 @@
 								{
 									echo'<form method="post" name="formcard" action="postulacion.php">';
 										echo'<div class="col  m6">';
-											echo'<div class="card large">';
+											echo'<div class="card large hoverable">';
 					              				echo'<div class="card-image waves-effect waves-block waves-light">';
 					               					echo'<img class="activator" src="img/' . $row->imagen . '">';
 					               					echo'<input type="hidden" name="id_aviso" value="' . $row->id_aviso . '">';
