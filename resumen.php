@@ -39,9 +39,10 @@
                 <div class="collapsible-body">
                   <?php
                     $userid = $_SESSION['id'];
-                    $query="SELECT *
-                    FROM avisos
-                    WHERE id_usuario= '$userid'";
+                    $query="SELECT a.*, payu.*
+                    FROM avisos as a
+                    join pedidoayuda as payu on a.id_pedidoayuda=payu.id_pedidoayuda
+                    WHERE a.id_usuario= '$userid'";
                     $result=mysqli_query($link, $query);
                     $numero_filas = mysqli_num_rows($result);
 
@@ -55,7 +56,8 @@
                           echo'<input type="hidden" name="id" value="' . $row->id_aviso . '">';
                           echo'<input type="hidden" name="titulo" value="' . $row->titulo . '">';
                           echo'<div class="row">
-                                <div class="col s8"><p>' . $row->titulo . '</p></div>
+                                <div class="col s8"><span class="title" grey-text>' . $row->titulo . '</span></div>
+                                <div class="col s8"><p>' . $row->descripcion . '</p></div>
                                 <div class="col s4">
                                   <span class="badge"><button class="btn-floating btn-small waves-effect waves-light orange tooltipped data-position="bottom" data-delay="50" data-tooltip="Eliminar" name="tacho"><i class="material-icons">delete</i></button></span>
                                   <span class="badge"><button class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver interesados" href="#modal1" name="lupa"><i class="material-icons">people_outline</i></button></span>

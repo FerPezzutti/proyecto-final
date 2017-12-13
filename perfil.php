@@ -23,6 +23,7 @@
                 WHERE u.email= '$user'";
                 $result=mysqli_query($link, $query);
                 $row = mysqli_fetch_object($result);
+<<<<<<< HEAD
                 echo '<a href="#!" class="collection-item"><i class="material-icons right"></i>' . $row->nombre . '</a>';
                 echo '<a href="#!" class="collection-item"><i class="material-icons right"></i>' . $row->apellido . '</a>';
                 echo '<a href="#!" class="collection-item"><i class="material-icons right"></i>' . $row->email . '</a>';
@@ -34,6 +35,17 @@
                 echo '<a href="#!" class="collection-item"><i class="material-icons right"></i>' . $row->provincia . '</a>';
                 echo '<a href="#!" class="collection-item"><i class="material-icons right"></i>' . $row->telefono . '</a>';
                 echo '<a href="#!" class="collection-item"><i class="material-icons right"></i>' . $row->usuariotipo . '</a>';
+=======
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>Nombre: ' . $row->nombre . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>Apellido: ' . $row->apellido . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>Email: ' . $row->email . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>Direccion: ' . $row->direccion . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>Localidad ' . $row->localidad . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>CP: ' . $row->codigopostal . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>Provincia: ' . $row->provincia . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>Telefono: ' . $row->telefono . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>Tipo de Usuario: ' . $row->usuariotipo . '</a>';
+>>>>>>> cb8c08760b7e152af5f67e293a9c6bcef76a474c
               ?>
             </div>
           </div>
