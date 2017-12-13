@@ -17,10 +17,9 @@
 		 <div class="col s12 m12">	
 			<!-- filtros -->
 				<div class= "row">
-				 <div class="input-field col s5">
           <form class="col s12" action="pedirayuda.php" method="get" onSubmit="" enctype="multipart/form-data">
+            <div class="input-field col s5">
                           <select id="categoria" name="categoria">
-                            <option value="" disabled selected>Todas</option>
                               <?php
                                 $provinciafiltro=$_GET['provincia'];
                                 $categoriafiltro=$_GET['categoria'];
@@ -37,6 +36,7 @@
                   <div class="input-field col s5">
                           <select id="provincia" name="provincia">
                               <?php
+                              $provinciafiltro=$_GET['provincia'];
                                 $id_usuario = $_SESSION['id'];
                                 $query="SELECT p.nombre as provincia, p.id_provincia as idprovincia
                                         FROM usuarios as u join provincias as p on u.id_provincia_fk=p.id_provincia
