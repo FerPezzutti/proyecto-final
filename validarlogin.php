@@ -24,6 +24,5 @@
     $_SESSION['usuariotipo'] = $row->id_usuariotipo_fk;
     header("Location: resumen.php");
     }
-
 ?>
 
