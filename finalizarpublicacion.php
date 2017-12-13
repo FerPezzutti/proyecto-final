@@ -1,20 +1,26 @@
 <?php
-  
+  require_once("conexion.php");
+  session_start();
   //si en avisos_usuarios no existe aviso con usuario puede borrar
 //si existe debe calificar primero
+$aviso=$_GET['aviso'];
 
-$aviso=($_GET['aviso']);
+$query = "SELECT *
+		FROM avisos_usuarios
+		WHERE id_aviso='$aviso' and NOT id_estado='4'";
+$result=mysqli_query($link, $query);
+$numero_filas = mysqli_num_rows($result);
 
-<<<<<<< HEAD
-$query = "UPDATE avisos
-          SET estado=1
-=======
-$query = "UPDATE avisos as a
-          SET a.estado=1
->>>>>>> 8685959ce4d75cf6777af69b5186c06924a21cc1
-          WHERE a.id_aviso='$aviso'";
+if ($numero_filas==0){
+	$query = "UPDATE avisos
+			SET estado=1
+          	WHERE id_aviso='$aviso'";
+	mysqli_query($link, $query);
+	mysqli_close($link);
+	header("Location: resumen.php");
+} else {
+	echo '<script language="javascript">alert("Debe calificar a todos los usuarios antes de finalizar la publicacion");</script>';
+}
+ 
 
-mysqli_query($link, $query);
-mysqli_close($link);
-header("Location: postulados.php");
 ?>

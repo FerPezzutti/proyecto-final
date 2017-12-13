@@ -11,6 +11,7 @@
   $id_usuario = $_SESSION['id'];
   $usuariotipo = $_SESSION['usuariotipo'];
   $creditosusuario = $_POST['creditosusuario'];
+  $estado = 0;
   $file_name=$_POST['nombreimg'];
   $uploads_dir = 'img/';
   $tmp_name = $_FILES["imageninput"]["tmp_name"];
@@ -30,12 +31,12 @@
                     SET creditos = '$creditosnuevos'
                     WHERE id_usuario=$id_usuario";
           mysqli_query($link, $queryupd);
-          $query="Insert Into avisos (titulo, descripcion, imagen, id_categoria, id_provincia, id_aviso_tipo, id_pedidoayuda, id_usuario) Values ('$titulo','$descripcion','$pathimg','$categoria','$provincia','$tipoaviso', '$tipoayuda', '$id_usuario')";
+          $query="Insert Into avisos (titulo, descripcion, imagen, id_categoria, id_provincia, id_aviso_tipo, id_pedidoayuda, id_usuario, estado) Values ('$titulo','$descripcion','$pathimg','$categoria','$provincia','$tipoaviso', '$tipoayuda', '$id_usuario', '$estado')";
           mysqli_query($link, $query);
           mysqli_close($link);
           header("Location: resumen.php");
         } else {
-          $query="Insert Into avisos (titulo, descripcion, imagen, id_categoria, id_provincia, id_aviso_tipo, id_pedidoayuda, id_usuario) Values ('$titulo','$descripcion','$pathimg','$categoria','$provincia','$tipoaviso', '$tipoayuda', '$id_usuario')";
+          $query="Insert Into avisos (titulo, descripcion, imagen, id_categoria, id_provincia, id_aviso_tipo, id_pedidoayuda, id_usuario, estado) Values ('$titulo','$descripcion','$pathimg','$categoria','$provincia','$tipoaviso', '$tipoayuda', '$id_usuario', '$estado')";
           mysqli_query($link, $query);
           mysqli_close($link);
           header("Location: resumen.php");

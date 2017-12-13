@@ -42,7 +42,7 @@
                     $query="SELECT a.*, payu.*
                     FROM avisos as a
                     join pedidoayuda as payu on a.id_pedidoayuda=payu.id_pedidoayuda
-                    WHERE a.id_usuario= '$userid'";
+                    WHERE a.id_usuario= '$userid' and a.estado='0'";
                     $result=mysqli_query($link, $query);
                     $numero_filas = mysqli_num_rows($result);
 
