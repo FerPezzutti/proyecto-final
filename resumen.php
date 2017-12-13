@@ -15,9 +15,9 @@
       <div class="section no-pad-bot" id="index-banner">
         <div class="container">
           <div class="col s12 m6">
-        	  <ul class="collapsible" data-collapsible="accordion">
+        	  <ul class="collapsible popout" data-collapsible="accordion">
               <li>
-                <div class="collapsible-header">
+                <div class="collapsible-header active">
                   Mis Publicaciones
                   <span class="badge">
                     <?php
