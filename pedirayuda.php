@@ -13,10 +13,58 @@
   	<?php include ('navbarperfil.php'); ?>
     <main>      
 		<div class="section no-pad-bot" id="index-banner">
-			<div class="container">
-				<div class="col s12 m12">
-			        <div class="row">
-			        	
+			<div class="container">	
+		 <div class="col s12 m12">	
+			<!-- filtros -->
+			<form class="col s12" action="pedirayuda.php" method="get" onSubmit="" enctype="multipart/form-data">
+				<div class= "row">
+				 <div class="input-field col m5">
+                          <select id="categoria" name="categoria">
+                            <option value="" disabled selected>Todas</option>
+                              <?php
+                                $query="SELECT * FROM avisos_categorias";
+                                $result=mysqli_query($link, $query);
+                                while($row = mysqli_fetch_object($result))
+                                {
+                                echo "<option value=" . $row->id_categoria . ">" . $row->descripcion . "</option>";
+                                }
+                              ?>
+                          </select>
+                          <label>Categoría</label>
+                        </div>
+                  <div class="input-field col m5">
+                          <select id="provincia" name="provincia">
+                              <?php
+                                $id_usuario = $_SESSION['id'];
+                                $query="SELECT p.nombre as provincia, p.id_provincia as idprovincia
+                                        FROM usuarios as u join provincias as p on u.id_provincia_fk=p.id_provincia
+                                        WHERE u.id_usuario='$id_usuario'";
+                                $result=mysqli_query($link, $query);
+                                $row = mysqli_fetch_object($result);
+                                echo '<option value="' . $row->idprovincia . '" selected>' . $row->provincia . '</option>';
+                              ?>
+                              <?php
+                                $idprovincia = $_SESSION['provincia'];
+                                $query="SELECT * 
+                                        FROM provincias
+                                        WHERE NOT id_provincia='$idprovincia'";
+                                $result=mysqli_query($link, $query);
+                                while($row = mysqli_fetch_object($result))
+                                {
+                                echo "<option value=" . $row->id_provincia . ">" . $row->nombre . "</option>";
+                                }
+                              ?>
+                          </select>
+                          <label>Provincia</label>
+                      </div>
+                        <!-- boton buscar -->
+                        <div class="col m2">
+                        <span class="badge"><href class="btn-floating btn-small waves-effect waves-light tooltipped" href="" data-tooltip="Filtrar Anuncios" name="veraviso"><i class="material-icons">search</i></a></span>
+                    	</div>
+                    </div>		
+                   </form>	
+				<div class="col s12 m12">					
+			        <div class="row">			        	
 			        	<?php
 			        		$userid = $_SESSION['id'];
 			        		$query="SELECT a.id_aviso as id_aviso, a.titulo as titulo, a.descripcion as descripcion, a.imagen as imagen, p.nombre as provincia, c.descripcion as categoria, a.id_pedidoayuda as pedidoayuda
