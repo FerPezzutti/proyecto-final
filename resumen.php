@@ -17,7 +17,7 @@
           <div class="col s12 m6">
         	  <ul class="collapsible" data-collapsible="accordion">
               <li>
-                <div class="collapsible-header">
+                <div class="collapsible-header active">
                   Mis Publicaciones
                   <span class="badge">
                     <?php
