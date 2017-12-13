@@ -8,12 +8,12 @@
 { 
   $query="UPDATE usuarios
           SET creditos=creditos-5
-          WHERE id_usuario=$idusuario";
+          WHERE id_usuario='$idusuario'";
   mysqli_query($link, $query);
 
   $query2="UPDATE avisos_usuarios
           SET id_estado=4
-          WHERE id_usuario=$idusuario and id_aviso=$id_aviso";
+          WHERE id_usuario='$idusuario' and id_aviso='$id_aviso'";
   mysqli_query($link, $query2);
 
   mysqli_close($link);
@@ -21,6 +21,10 @@
 } 
 else if(isset($_POST['neutro'])) 
 { 
+  $query2="UPDATE avisos_usuarios
+          SET id_estado=4
+          WHERE id_usuario='$idusuario' and id_aviso='$id_aviso'";
+  mysqli_query($link, $query2);
   header("Location: postulados.php");
 }  
 
@@ -28,8 +32,13 @@ else if(isset($_POST['neutro']))
 { 
   $query="UPDATE usuarios
           SET creditos=creditos+5
-          WHERE id_usuario=$idusuario";
+          WHERE id_usuario='$idusuario'";
   mysqli_query($link, $query);
+  $query2="UPDATE avisos_usuarios
+          SET id_estado=4
+          WHERE id_usuario='$idusuario' and id_aviso='$id_aviso'";
+  mysqli_query($link, $query2);
+  
   mysqli_close($link);
   header("Location: postulados.php");
 } 

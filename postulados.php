@@ -70,7 +70,7 @@
                       echo'</form>';
                   }
                   echo'</ul>';
-                  echo'<a class="waves-effect waves-light btn orange right" href="finalizarpublicacion.php?aviso=' . $id . '&usuario=' . $user . ' ">Finalizar Publicacion</a>';
+                  echo'<a class="waves-effect waves-light btn orange right" href="finalizarpublicacion.php?aviso=' . $id . ' ">Finalizar Publicacion</a>';
                 }
               ?>
           </div>

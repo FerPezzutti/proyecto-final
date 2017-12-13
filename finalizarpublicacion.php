@@ -4,11 +4,10 @@
 //si existe debe calificar primero
 
 $aviso=($_GET['aviso']);
-$usuario=($_GET['usuario']);
 
-$query = "UPDATE avisos as a
+$query = "UPDATE avisos
           SET estado=1
-          WHERE a.id_aviso='$aviso';"
+          WHERE a.id_aviso='$aviso'";
 
 mysqli_query($link, $query);
 mysqli_close($link);
