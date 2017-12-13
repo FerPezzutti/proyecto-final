@@ -7,7 +7,7 @@ $aviso=$_GET['aviso'];
 
 $query = "SELECT *
 		FROM avisos_usuarios
-		WHERE id_aviso='$aviso' and NOT id_estado='4'";
+		WHERE id_aviso='$aviso' and NOT id_estado IN ('4','2')";
 $result=mysqli_query($link, $query);
 $numero_filas = mysqli_num_rows($result);
 
@@ -19,7 +19,10 @@ if ($numero_filas==0){
 	mysqli_close($link);
 	header("Location: resumen.php");
 } else {
-	echo '<script language="javascript">alert("Debe calificar a todos los usuarios antes de finalizar la publicacion");</script>';
+	/*echo '<script language="javascript">alert("Debe calificar a todos los usuarios antes de finalizar la publicacion");
+		</script>';	*/
+
+		echo '<script language="javascript">alert("Debe calificar a todos los usuarios antes de finalizar la publicacion"); window.location.href = "postulados.php";</script>';
 }
  
 
