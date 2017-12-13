@@ -15,9 +15,9 @@
       <div class="section no-pad-bot" id="index-banner">
         <div class="container">
           <div class="col s12 m6">
-        	  <ul class="collapsible popout" data-collapsible="accordion">
+        	  <ul class="collapsible" data-collapsible="accordion">
               <li>
-                <div class="collapsible-header active">
+                <div class="collapsible-header">
                   Mis Publicaciones
                   <span class="badge">
                     <?php
@@ -49,23 +49,23 @@
                     if ($numero_filas==null){
                     echo'<p>No tiene publicaciones</p>';
                     } else{
-                      
+                      echo'<ul class="collection">';
                       while($row = mysqli_fetch_object($result))
                         {
                           echo'<form action="borraravisos.php" method="post">';
                           echo'<input type="hidden" name="id" value="' . $row->id_aviso . '">';
                           echo'<input type="hidden" name="titulo" value="' . $row->titulo . '">';
-                          echo'<div class="row">
-                                <div class="col s8"><span class="title" grey-text>' . $row->titulo . '</span></div>
-                                <div class="col s8"><p>' . $row->descripcion . '</p></div>
-                                <div class="col s4">
+                          echo'<li class="collection-item avatar">
+                                <span class="title" grey-text>' . $row->titulo . '</span>
+                                <h6 class="grey-text lighten-5">' . $row->descripcion . '</h6>
+                                <div class="secondary-content divpostulados">
                                   <span class="badge"><button class="btn-floating btn-small waves-effect waves-light orange tooltipped data-position="bottom" data-delay="50" data-tooltip="Eliminar" name="tacho"><i class="material-icons">delete</i></button></span>
                                   <span class="badge"><button class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver interesados" href="#modal1" name="lupa"><i class="material-icons">people_outline</i></button></span>
                                   <span class="badge"><a class="btn-floating btn-small waves-effect waves-light tooltipped" href="aviso.php?idaviso=' . $row->id_aviso . '" data-tooltip="Ver Aviso" name="veraviso"><i class="material-icons">search</i></a></span>
-                                </div>
-                              </div>';
+                                </div>';
                           echo'</form>';
                         }
+                        echo'</ul>';
                       }
                   ?>
                 </div>
