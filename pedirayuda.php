@@ -32,7 +32,7 @@
 								{
 									echo'<form method="post" name="formcard" action="postulacion.php">';
 										echo'<div class="col  m6">';
-											echo'<div class="card large hoverable">';
+											echo'<div class="card large">';
 					              				echo'<div class="card-image waves-effect waves-block waves-light">';
 					               					echo'<img class="activator" src="img/' . $row->imagen . '">';
 					               					echo'<input type="hidden" name="id_aviso" value="' . $row->id_aviso . '">';
@@ -41,11 +41,10 @@
 					                				echo'<span class="card-title activator grey-text text-darken-4">' . $row->titulo . '<i class="material-icons right">more_vert</i></span>';
 					                				echo'<div class="chip">' . $row->categoria . '</div>';
 				                					echo'<div class="chip">' . $row->provincia . '</div>';
-					                   				echo'<div class="row">';
-					                    				echo'<div class="col  m6 offset-m4">';
-					                    				echo'<button type="submit" name="btn_solicitar" class="waves-effect waves-light btn-large">SOLICITAR</button>';
-					              						echo'</div>';
-					             					echo'</div>';
+				                					echo'<div class="card-action center">
+										              <a href="aviso.php?idaviso='.$row->id_aviso.'" class="btn btn-large waves-effect waves-light"><i class="small material-icons right">search</i>VER</a>
+										              <button type="submit" name="btn_solicitar" class="waves-effect waves-light btn-large"><i class="small material-icons right">check_circle</i>SOLICITAR</button>
+										            </div>';
 					              				echo'</div>';
 					              				echo'<div class="card-reveal">';
 					                				echo'<span class="card-title grey-text text-darken-4">' . $row->titulo . '<i class="material-icons right">close</i></span>';
