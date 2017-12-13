@@ -58,7 +58,8 @@
                                 <div class="col s8"><p>' . $row->titulo . '</p></div>
                                 <div class="col s4">
                                   <span class="badge"><button class="btn-floating btn-small waves-effect waves-light orange tooltipped data-position="bottom" data-delay="50" data-tooltip="Eliminar" name="tacho"><i class="material-icons">delete</i></button></span>
-                                  <span class="badge"><button class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver interesados" href="#modal1" name="lupa"><i class="material-icons">search</i></button></span>
+                                  <span class="badge"><button class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver interesados" href="#modal1" name="lupa"><i class="material-icons">people_outline</i></button></span>
+                                  <span class="badge"><button class="btn-floating btn-small waves-effect waves-light tooltipped" href="" data-tooltip="Ver Aviso" name="veraviso"><i class="material-icons">search</i></button></span>
                                 </div>
                               </div>';
                           echo'</form>';
@@ -100,29 +101,32 @@
                     if ($numero_filas==null){
                     echo'<p>No posee ayudas pendientes</p>';
                     } else{
-                      
+                      echo'<ul class="collection">';
                       while($row = mysqli_fetch_object($result))
                         {
                         	echo'<form action="borrar.php" method="post">';
-                          echo'<input type="hidden" name="id" value="' . $row->id . '">';
-                          echo'<input type="hidden" name="datosusuario" value="' . $row->datosusuario . '">';
-                          echo'<div class="row">
-                                <div class="col s9"><p>' . $row->titulo . '</p></div>
-                                <div class="col s3">';
+                        	echo'<input type="hidden" name="id" value="' . $row->id . '">';
+                        	echo'<input type="hidden" name="datosusuario" value="' . $row->datosusuario . '">';
+                        	echo'<li class="collection-item avatar">';
+                        	echo'<span class="title">' . $row->titulo . '</span>';
+                        	
                             if($row->idestado==1){
-                              echo '<p>Pendiente</p>';
+                              echo '<p class="orange-text">Pendiente</p>';
+                              echo '<div class="secondary-content divpostulados">';
                               echo'<span class="badge"><button class="btn-floating btn-small waves-effect waves-light orange tooltipped data-position="bottom" data-delay="50" data-tooltip="Eliminar" name="borrar"><i class="material-icons">delete</i></button></span>';
+                              echo'</div>';
                             } else if($row->idestado==3){
-                                echo '<p>Aprobado</p>';
+                                echo '<p class="teal-text">Aprobado</p>';
+                                echo '<div class="secondary-content divpostulados">';
                                 echo '<span class="badge"><button class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver interesados" name="lupa"><i class="material-icons">search</i></button></span>';
+                                echo'</div>';
                             } else {
-                                echo '<p>Rechazado</p>';
+                                echo '<p class="red-text">Rechazado</p>';
                             }
-                              echo'</div>
-                              </div>';
+                              echo'</li>';
                               echo'</form>';
                         }
-                        
+                        echo'</ul>';
                       }
                   ?>
                 </div>
@@ -160,28 +164,29 @@
                     if ($numero_filas==null){
                     echo'<p>No posee solicitudes pendientes</p>';
                     } else{
-
+                    	echo'<ul class="collection">';
                       while($row = mysqli_fetch_object($result))
                         {
-                        	echo'<form action="borrar.php" method="post">';
+                          echo'<form action="borrar.php" method="post">';
                           echo'<input type="hidden" name="id" value="' . $row->id . '">';
                           echo'<input type="hidden" name="datosusuario" value="' . $row->datosusuario . '">';
-                          echo'<div class="row">
-                                <div class="col s9"><p>' . $row->titulo . '</p></div>
-                                <div class="col s3">';
+                          echo'<li class="collection-item avatar">';
+                        	echo'<span class="title">' . $row->titulo . '</span>';
                             if($row->idestado==1){
-                              echo '<p>Pendiente</p>';
+                              echo '<p class="orange-text">Pendiente</p>';
+                              echo '<div class="secondary-content divpostulados">';
                               echo'<span class="badge"><button class="btn-floating btn-small waves-effect waves-light orange tooltipped data-position="bottom" data-delay="50" data-tooltip="Eliminar" name="borrar"><i class="material-icons">delete</i></button></span>';
                             } else if($row->idestado==3){
-                                echo '<p>Aprobado</p>';
+                                echo '<p class="teal-text">Aprobado</p>';
+                                echo '<div class="secondary-content divpostulados">';
                                 echo '<span class="badge"><button class="waves-effect waves-light btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver interesados" name="lupa"><i class="material-icons">search</i></button></span>';
                             } else {
-                                echo '<p>Rechazado</p>';
+                                echo '<p class="red-text">Rechazado</p>';
                             }
-                              echo'</div>
-                              </div>';
+                              echo'</li>';
                               echo'</form>';
                         }
+                        echo'</ul>';
                       }
                   ?>
                 </div>

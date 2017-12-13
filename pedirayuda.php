@@ -32,7 +32,7 @@
 								{
 									echo'<form method="post" name="formcard" action="postulacion.php">';
 										echo'<div class="col  m6">';
-											echo'<div class="card large">';
+											echo'<div class="card large hoverable">';
 					              				echo'<div class="card-image waves-effect waves-block waves-light">';
 					               					echo'<img class="activator" src="img/' . $row->imagen . '">';
 					               					echo'<input type="hidden" name="id_aviso" value="' . $row->id_aviso . '">';

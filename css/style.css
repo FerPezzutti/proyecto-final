@@ -70,3 +70,11 @@ body {
 .divpostulados{
   width: 50%;
 }
+
+#i.iconosperfil:hover{
+  color: red;
+}
+
+.bold {
+  font-size: 15px;
+}

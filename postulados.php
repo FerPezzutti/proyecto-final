@@ -19,6 +19,7 @@
               <?php
               $id=$_SESSION['idaviso'];
               $titulo=$_SESSION['titulo'];
+              $user=$_SESSION['id'];
               $query="SELECT USU.id_usuario as idusuario, USU.nombre as usuario, USU.apellido as apellido, PROV.id_provincia, PROV.nombre as provincia, AVI.id_aviso, AVI.titulo as titulo, AVI.descripcion, AUSU.id_estado as estado FROM usuarios USU INNER JOIN avisos_usuarios AUSU ON USU.id_usuario = AUSU.id_usuario INNER JOIN avisos AVI ON AUSU.id_aviso = AVI.id_aviso INNER JOIN provincias PROV ON USU.id_provincia_fk = PROV.id_provincia WHERE AUSU.id_aviso = '$id'";
               $result=mysqli_query($link, $query);
               $numero_filas = mysqli_num_rows($result);
@@ -40,8 +41,10 @@
                             if($row->estado==1){
                               echo '<p class="orange-text">Pendiente</p>';
                               echo '<div class="secondary-content divpostulados">';
+
                               echo'<span class="badge"><button class="btn-floating btn-small waves-effect waves-light tooltipped" href="" data-tooltip="Aprobar" name="aprobar"><i class="material-icons">check</i></button></span>';
                               echo '<span class="badge"><button class="btn-floating btn-small waves-effect waves-light red tooltipped" href="" data-tooltip="Rechazar" name="rechazar"><i class="material-icons">clear</i></button></span>';
+                              
                               echo'</div>';
                             } else if($row->estado==3){
                                 echo '<p class="teal-text">Aprobado</p>';
@@ -49,12 +52,14 @@
 
                                 echo '<span class="badge"><a class="waves-effect waves-light orange pulse btn-floating btn-small tooltipped dropdown-button btn data-activates="dropdown1" href="calificar.php?id_aviso=' . $id . '&id_usuario=' . $row->idusuario . ' " data-position="bottom" data-delay="50" data-tooltip="Calificar" name="calificar"><i class="material-icons">create</i></a></span>';
                                 echo '<span class="badge"><button class="waves-effect waves-light orange btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver Perfil" name="lupa"><i class="material-icons">info_outline</i></button></span>';
+                                
                                 echo'</div>';
                             } else if($row->estado==4){
                                 echo '<p class="orange-text">Calificado</p>';
                                 echo '<div class="secondary-content divpostulados">';
 
                                 echo '<span class="badge"><button class="waves-effect waves-light orange btn-floating btn-small modal-trigger tooltipped data-position="bottom" data-delay="50" data-tooltip="Ver Perfil" name="lupa"><i class="material-icons">info_outline</i></button></span>';
+                                
                                 echo'</div>';
 
                             } else {
@@ -65,7 +70,7 @@
                       echo'</form>';
                   }
                   echo'</ul>';
-                  echo'<a class="waves-effect waves-light btn orange right">Finalizar Publicacion</a>';
+                  echo'<a class="waves-effect waves-light btn orange right" href="finalizarpublicacion.php?aviso=' . $id . '&usuario=' . $user . ' ">Finalizar Publicacion</a>';
                 }
               ?>
           </div>

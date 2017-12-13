@@ -19,6 +19,12 @@ else if(isset($_POST['lupa']))
 	$_SESSION['titulo'] = $titulo;
   header("Location: postulados.php");
 }  
-
+else if(isset($_POST['veraviso'])) 
+{ 
+  $id = $_POST['id'];
+  $_SESSION['idaviso'] = $id;
+  $_SESSION['titulo'] = $titulo;
+  header("Location: aviso.php");
+}
   
 ?>
