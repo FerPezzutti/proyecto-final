@@ -15,8 +15,8 @@
 		<div class="section no-pad-bot" id="index-banner">
 			<div class="container">	
 		 <div class="col s12 m12">	
-			<!-- filtros -->
 				<div class= "row">
+          <!-- filtros -->
           <form class="col s12" action="pedirayuda.php" method="get" onSubmit="" enctype="multipart/form-data">
             <div class="input-field col s5">
                           <select id="categoria" name="categoria">
