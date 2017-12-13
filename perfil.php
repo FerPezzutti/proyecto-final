@@ -23,17 +23,17 @@
                 WHERE u.email= '$user'";
                 $result=mysqli_query($link, $query);
                 $row = mysqli_fetch_object($result);
-                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->nombre . '</a>';
-                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->apellido . '</a>';
-                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->email . '</a>';
-                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->password . '</a>';
-                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->documento . '</a>';
-                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->direccion . '</a>';
-                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->localidad . '</a>';
-                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->codigopostal . '</a>';
-                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->provincia . '</a>';
-                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->telefono . '</a>';
-                echo '<a href="#!" class="collection-item"><i class="material-icons right">create</i>' . $row->usuariotipo . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right"></i>' . $row->nombre . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right"></i>' . $row->apellido . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right"></i>' . $row->email . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right"></i>' . $row->password . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right"></i>' . $row->documento . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right"></i>' . $row->direccion . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right"></i>' . $row->localidad . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right"></i>' . $row->codigopostal . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right"></i>' . $row->provincia . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right"></i>' . $row->telefono . '</a>';
+                echo '<a href="#!" class="collection-item"><i class="material-icons right"></i>' . $row->usuariotipo . '</a>';
               ?>
             </div>
           </div>
