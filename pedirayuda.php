@@ -16,12 +16,14 @@
 			<div class="container">	
 		 <div class="col s12 m12">	
 			<!-- filtros -->
-			<form class="col s12" action="pedirayuda.php" method="get" onSubmit="" enctype="multipart/form-data">
 				<div class= "row">
-				 <div class="input-field col m5">
+				 <div class="input-field col s5">
+          <form class="col s12" action="pedirayuda.php" method="get" onSubmit="" enctype="multipart/form-data">
                           <select id="categoria" name="categoria">
                             <option value="" disabled selected>Todas</option>
                               <?php
+                                $provinciafiltro=$_GET['provincia'];
+                                $categoriafiltro=$_GET['categoria'];
                                 $query="SELECT * FROM avisos_categorias";
                                 $result=mysqli_query($link, $query);
                                 while($row = mysqli_fetch_object($result))
@@ -32,7 +34,7 @@
                           </select>
                           <label>Categoría</label>
                         </div>
-                  <div class="input-field col m5">
+                  <div class="input-field col s5">
                           <select id="provincia" name="provincia">
                               <?php
                                 $id_usuario = $_SESSION['id'];
@@ -42,8 +44,7 @@
                                 $result=mysqli_query($link, $query);
                                 $row = mysqli_fetch_object($result);
                                 echo '<option value="' . $row->idprovincia . '" selected>' . $row->provincia . '</option>';
-                              ?>
-                              <?php
+                             
                                 $idprovincia = $_SESSION['provincia'];
                                 $query="SELECT * 
                                         FROM provincias
@@ -58,20 +59,31 @@
                           <label>Provincia</label>
                       </div>
                         <!-- boton buscar -->
-                        <div class="col m2">
-                        <span class="badge"><href class="btn-floating btn-small waves-effect waves-light tooltipped" href="" data-tooltip="Filtrar Anuncios" name="veraviso"><i class="material-icons">search</i></a></span>
+                        <div class="col s2">
+                        <span class="badge"><button class="btn-floating btn-small waves-effect waves-light tooltipped" href="" data-tooltip="Filtrar Anuncios"><i class="material-icons">search</i></button></span>
                     	</div>
                     </div>		
                    </form>	
 				<div class="col s12 m12">					
 			        <div class="row">			        	
 			        	<?php
+
+                if ($provinciafiltro==null && $categoriafiltro==null){
+
 			        		$userid = $_SESSION['id'];
 			        		$query="SELECT a.id_aviso as id_aviso, a.titulo as titulo, a.descripcion as descripcion, a.imagen as imagen, p.nombre as provincia, c.descripcion as categoria, a.id_pedidoayuda as pedidoayuda
 							FROM avisos as a join provincias as p on a.id_provincia=p.id_provincia join avisos_categorias as c on a.id_categoria=c.id_categoria
 							WHERE a.id_pedidoayuda='2' and NOT a.id_usuario='$userid'";
 							$result=mysqli_query($link, $query);
 							$numero_resultados = mysqli_num_rows($result);
+            } else {
+              $userid = $_SESSION['id'];
+                  $query="SELECT a.id_aviso as id_aviso, a.titulo as titulo, a.descripcion as descripcion, a.imagen as imagen, p.nombre as provincia, c.descripcion as categoria, a.id_pedidoayuda as pedidoayuda
+              FROM avisos as a join provincias as p on a.id_provincia=p.id_provincia join avisos_categorias as c on a.id_categoria=c.id_categoria
+              WHERE a.id_pedidoayuda='2' and NOT a.id_usuario='$userid' and p.id_provincia='$provinciafiltro' and c.id_categoria=$categoriafiltro";
+              $result=mysqli_query($link, $query);
+              $numero_resultados = mysqli_num_rows($result);
+            }
 
 							if ($numero_resultados==null){
 							echo'<p>No hay anuncios disponibles</p>';
@@ -105,7 +117,7 @@
 				        		}
 				        	}
 			        	?>
-			        	
+			        	 
 			       		
 
 	        		</div>
