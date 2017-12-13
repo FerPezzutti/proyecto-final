@@ -71,15 +71,21 @@
                 if ($provinciafiltro==null && $categoriafiltro==null){
 
 			        		$userid = $_SESSION['id'];
-			        		$query="SELECT a.id_aviso as id_aviso, a.titulo as titulo, a.descripcion as descripcion, a.imagen as imagen, p.nombre as provincia, c.descripcion as categoria, a.id_pedidoayuda as pedidoayuda
-							FROM avisos as a join provincias as p on a.id_provincia=p.id_provincia join avisos_categorias as c on a.id_categoria=c.id_categoria
-							WHERE a.id_pedidoayuda='2' and NOT a.id_usuario='$userid' and a.estado='0'";
+			        		$query="SELECT a.id_aviso as id_aviso, a.titulo as titulo, a.descripcion as descripcion, a.imagen as imagen, p.nombre as provincia, c.descripcion as categoria, a.id_pedidoayuda as pedidoayuda, usu.creditos as creditos
+              FROM avisos as a 
+              join provincias as p on a.id_provincia=p.id_provincia 
+              join avisos_categorias as c on a.id_categoria=c.id_categoria
+              join usuarios as usu on a.id_usuario=usu.id_usuario
+              WHERE a.id_pedidoayuda='2' and NOT a.id_usuario='$userid' and a.estado='0'";
 							$result=mysqli_query($link, $query);
 							$numero_resultados = mysqli_num_rows($result);
             } else {
               $userid = $_SESSION['id'];
-                  $query="SELECT a.id_aviso as id_aviso, a.titulo as titulo, a.descripcion as descripcion, a.imagen as imagen, p.nombre as provincia, c.descripcion as categoria, a.id_pedidoayuda as pedidoayuda
-              FROM avisos as a join provincias as p on a.id_provincia=p.id_provincia join avisos_categorias as c on a.id_categoria=c.id_categoria
+                   $query="SELECT a.id_aviso as id_aviso, a.titulo as titulo, a.descripcion as descripcion, a.imagen as imagen, p.nombre as provincia, c.descripcion as categoria, a.id_pedidoayuda as pedidoayuda, usu.creditos as creditos
+              FROM avisos as a 
+              join provincias as p on a.id_provincia=p.id_provincia 
+              join avisos_categorias as c on a.id_categoria=c.id_categoria
+              join usuarios as usu on a.id_usuario=usu.id_usuario
               WHERE a.id_pedidoayuda='2' and NOT a.id_usuario='$userid' and p.id_provincia='$provinciafiltro' and c.id_categoria=$categoriafiltro and a.estado='0'";
               $result=mysqli_query($link, $query);
               $numero_resultados = mysqli_num_rows($result);
@@ -101,6 +107,7 @@
 					                				echo'<span class="card-title activator grey-text text-darken-4">' . $row->titulo . '<i class="material-icons right">more_vert</i></span>';
 					                				echo'<div class="chip">' . $row->categoria . '</div>';
 				                					echo'<div class="chip">' . $row->provincia . '</div>';
+                                  echo'<div class="chip"><i class="tiny material-icons">star</i>' . $row->creditos . '</div>';
 				                					echo'<div class="card-action center">
 										              <a href="aviso.php?idaviso='.$row->id_aviso.'" class="btn btn-large waves-effect waves-light"><i class="small material-icons right">search</i>VER</a>
 										              <button type="submit" name="btn_solicitar" class="waves-effect waves-light btn-large"><i class="small material-icons right">check_circle</i>SOLICITAR</button>
